@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR133" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c5e4d3ae-4298-4ee9-a28a-6ac8159c8ae5">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#CCCCCC">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="STAFF_LIST" uuid="ba869bdb-1c13-4996-81b3-2d7073fc57e8">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<queryString language="plsql">
+			<![CDATA[SELECT DISTINCT 
+STH_EVALUATOR_ID,
+GET_STAFF_NAME(STH_EVALUATOR_ID) EVA_NAME,
+STH_STAFF_ID,
+GET_STAFF_NAME(STH_STAFF_ID) STAFF_NAME,
+TH_TRAINING_TITLE,
+STH_HOD_EVALUATION,
+TO_CHAR(STH_EVALUATION_DATE,'dd/mm/yyyy')EVALUATION_DATE,
+TH_REF_ID,
+TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
+TH_TRAINING_VENUE
+FROM TRAINING_HEAD,STAFF_TRAINING_HEAD,TRAINING_HEAD_DETL,STAFF_MAIN,STAFF_STATUS
+WHERE SM_STAFF_STATUS = SS_STATUS_CODE
+AND SS_STATUS_STS = 'ACTIVE'
+AND STH_STAFF_ID = SM_STAFF_ID
+AND STH_TRAINING_REFID = TH_REF_ID
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND THD_REF_ID = TH_REF_ID
+AND TH_STATUS = 'APPROVE'
+AND STH_STATUS = 'APPROVE'	
+AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+AND TO_CHAR(TH_DATE_FROM,'yyyy') < '2016' 
+AND ($P{REFID} IS NULL OR ($P{REFID} IS NOT NULL AND TH_REF_ID = $P{REFID}))
+UNION
+SELECT DISTINCT 
+STH_EVALUATOR_ID,
+GET_STAFF_NAME(STH_EVALUATOR_ID) EVA_NAME,
+STH_STAFF_ID,
+GET_STAFF_NAME(STH_STAFF_ID) STAFF_NAME,
+TH_TRAINING_TITLE,
+STH_HOD_EVALUATION,
+TO_CHAR(STH_EVALUATION_DATE,'dd/mm/yyyy')EVALUATION_DATE,
+TH_REF_ID,
+TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
+TH_TRAINING_VENUE
+FROM TRAINING_HEAD,STAFF_TRAINING_HEAD,TRAINING_HEAD_DETL,STAFF_MAIN,STAFF_STATUS
+WHERE SM_STAFF_STATUS = SS_STATUS_CODE
+AND SS_STATUS_STS = 'ACTIVE' 
+AND STH_STAFF_ID = SM_STAFF_ID
+AND STH_TRAINING_REFID = TH_REF_ID
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND THD_REF_ID = TH_REF_ID
+AND TH_STATUS = 'APPROVE'
+AND STH_STATUS = 'APPROVE'	
+AND TH_INTERNAL_EXTERNAL = 'EXTERNAL_AGENCY'
+AND ($P{REFID} IS NULL OR ($P{REFID} IS NOT NULL AND TH_REF_ID = $P{REFID}))
+UNION
+SELECT DISTINCT 
+STH_EVALUATOR_ID,
+GET_STAFF_NAME(STH_EVALUATOR_ID) EVA_NAME,
+STH_STAFF_ID,
+GET_STAFF_NAME(STH_STAFF_ID) STAFF_NAME,
+TH_TRAINING_TITLE,
+STH_HOD_EVALUATION,
+TO_CHAR(STH_EVALUATION_DATE,'dd/mm/yyyy')EVALUATION_DATE,
+TH_REF_ID,
+TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
+TH_TRAINING_VENUE
+FROM TRAINING_HEAD,STAFF_TRAINING_HEAD,TRAINING_HEAD_DETL,STAFF_TRAINING_DETL,STAFF_MAIN,STAFF_STATUS
+WHERE SM_STAFF_STATUS = SS_STATUS_CODE
+AND SS_STATUS_STS = 'ACTIVE'
+AND STH_STAFF_ID = SM_STAFF_ID
+AND STH_TRAINING_REFID = TH_REF_ID
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND THD_REF_ID = TH_REF_ID
+AND TH_STATUS = 'APPROVE'
+AND STH_STATUS = 'APPROVE'	
+AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+AND TO_CHAR(TH_DATE_FROM,'yyyy') >= '2016' 
+AND STD_ATTEND IN ('Y','A')
+AND STH_TRAINING_REFID = STD_TRAINING_REFID
+AND STH_STAFF_ID = STD_STAFF_ID
+AND ($P{REFID} IS NULL OR ($P{REFID} IS NOT NULL AND TH_REF_ID = $P{REFID}))
+ORDER BY STH_STAFF_ID]]>
+		</queryString>
+		<field name="STH_EVALUATOR_ID" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="STH_EVALUATOR_ID"/>
+		</field>
+		<field name="EVA_NAME" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="EVA_NAME"/>
+		</field>
+		<field name="STH_STAFF_ID" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="STH_STAFF_ID"/>
+		</field>
+		<field name="STAFF_NAME" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="STAFF_NAME"/>
+		</field>
+		<field name="TH_TRAINING_TITLE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_TRAINING_TITLE"/>
+		</field>
+		<field name="STH_HOD_EVALUATION" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="STH_HOD_EVALUATION"/>
+		</field>
+		<field name="EVALUATION_DATE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="EVALUATION_DATE"/>
+		</field>
+		<field name="TH_REF_ID" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_REF_ID"/>
+		</field>
+		<field name="TH_DATE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_DATE"/>
+		</field>
+		<field name="TH_TRAINING_VENUE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_TRAINING_VENUE"/>
+		</field>
+		<variable name="STAFF_ID_VAR" class="java.lang.String">
+			<variableExpression><![CDATA[$F{STH_STAFF_ID}]]></variableExpression>
+		</variable>
+		<variable name="C_TITLE" class="java.lang.String">
+			<variableExpression><![CDATA[$F{TH_TRAINING_TITLE}]]></variableExpression>
+		</variable>
+		<variable name="C_DATE" class="java.lang.String">
+			<variableExpression><![CDATA[$F{TH_DATE}]]></variableExpression>
+		</variable>
+		<variable name="C_VENUE" class="java.lang.String">
+			<variableExpression><![CDATA[$F{TH_TRAINING_VENUE}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="SEQ" uuid="e27d2538-a18b-4963-b94f-0c19b6115212">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<parameter name="STAFF_ID" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT TMH_SEQ,TMHS_RECEIVE_BY,TO_CHAR(TMH_SEND_DATE,'dd/mm/yyyy')SEND_DATE
+FROM TRAINING_MEMO_HISTORY,TRAINING_MEMO_HIS_STAFF
+WHERE TMH_MEMO_ID = TMHS_MEMO_ID
+AND TMH_TRAINING_REFID = $P{REFID} 
+AND TMHS_CC_STATUS = 'N'
+AND TMHS_RECEIVE_BY = $P{STAFF_ID} 
+AND TMH_SEQ IS NOT NULL
+AND TMH_MODULE = 'TRAINING_EFFECTIVENESS'
+ORDER BY TMH_SEQ]]>
+		</queryString>
+		<field name="TMH_SEQ" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="TMH_SEQ"/>
+		</field>
+		<field name="TMHS_RECEIVE_BY" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TMHS_RECEIVE_BY"/>
+		</field>
+		<field name="SEND_DATE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="SEND_DATE"/>
+		</field>
+	</subDataset>
+	<parameter name="REFID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM DUAL]]>
+	</queryString>
+	<variable name="C_TITLE" class="java.lang.String"/>
+	<variable name="C_DATE" class="java.lang.String"/>
+	<variable name="C_VENUE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="9" width="555" height="32" uuid="8d004056-9aac-490b-8239-d5c368c86e73"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SENARAI PENILAI YANG MENGHANTAR BORANG PENILAIAN
+UNIVERSITI PENDIDIKAN SULTAN IDRIS
+]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="455" y="-18" width="100" height="27" uuid="86d6c231-66c5-4f9b-bb3f-68fd819ce6de"/>
+				<textField evaluationTime="Master">
+					<reportElement x="0" y="0" width="100" height="15" uuid="c26de508-54e2-453e-b499-769d5f1a778f"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Muka Surat :      "+$V{MASTER_CURRENT_PAGE}+" / "+$V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="0" y="12" width="100" height="15" uuid="99135548-97dc-47d6-a945-078ea56738ea">
+						<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+						<paragraph rightIndent="-3"/>
+					</textElement>
+					<text><![CDATA[ Report ID : ATR133 ]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="0" y="60" width="555" height="48" uuid="260a6a42-25ea-458f-9f3d-d5d656b5560f"/>
+				<frame>
+					<reportElement positionType="Float" x="0" y="0" width="555" height="16" uuid="2632299e-45dc-41ff-9c1e-23003e41a720"/>
+					<staticText>
+						<reportElement x="0" y="0" width="80" height="16" uuid="bc0bedc9-c321-4598-a7be-18c2b6867e03"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Nama Kursus]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="80" y="0" width="3" height="16" uuid="6e09fdc0-9136-4c0d-a177-64a732cab61e"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" isBold="true"/>
+						</textElement>
+						<text><![CDATA[:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+						<reportElement x="90" y="0" width="465" height="16" uuid="034f37b0-accd-4a5d-bd5d-c6df0cd5a226"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{C_TITLE}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement positionType="Float" x="0" y="16" width="555" height="16" uuid="de12c7f1-4866-4ef1-97f8-e26234222377"/>
+					<staticText>
+						<reportElement x="0" y="0" width="80" height="16" uuid="1db28e4d-38a3-4da7-82b6-9e1569a5dc68"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Tarikh]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="80" y="0" width="3" height="16" uuid="8da51dfd-9d1e-4f18-ba34-7a808489af08"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" isBold="true"/>
+						</textElement>
+						<text><![CDATA[:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+						<reportElement x="90" y="0" width="465" height="16" uuid="04e0c750-a4b8-4e68-adf8-5210365edf40"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{C_DATE}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement positionType="Float" x="0" y="32" width="555" height="16" uuid="3b8560e1-12c1-46e1-aabd-4b5ba70b82c0"/>
+					<staticText>
+						<reportElement x="0" y="0" width="80" height="16" uuid="144d63e7-bdfa-4f22-9f83-ac8538755816"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Tempat]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="80" y="0" width="3" height="16" uuid="10db7ce2-a692-4ff7-9493-e5e50b52656e"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" isBold="true"/>
+						</textElement>
+						<text><![CDATA[:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+						<reportElement x="90" y="0" width="465" height="16" uuid="f7b42775-cc69-4b2c-b212-8b87396dfe7c"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{C_VENUE}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</frame>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="152" splitType="Stretch">
+			<componentElement>
+				<reportElement positionType="Float" x="0" y="10" width="555" height="100" uuid="0434647e-9615-4231-a8a7-5ca54c4dc590">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="STAFF_LIST" uuid="219ee3d9-fb1e-4d47-b6f5-a52e5512f6b8">
+						<datasetParameter name="REFID">
+							<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<returnValue fromVariable="C_TITLE" toVariable="C_TITLE"/>
+						<returnValue fromVariable="C_DATE" toVariable="C_DATE"/>
+						<returnValue fromVariable="C_VENUE" toVariable="C_VENUE"/>
+					</datasetRun>
+					<jr:column width="30" uuid="418a27cf-b1de-4afa-a042-39a54a21b882">
+						<jr:columnHeader style="Table_CH" height="40">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="40" uuid="acec8423-9394-4f7b-91e8-0d3d857b3792">
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font fontName="Arial" isBold="true"/>
+									<paragraph spacingBefore="8"/>
+								</textElement>
+								<text><![CDATA[BIL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="50">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="30" height="50" uuid="7bf220a0-3d91-41c9-b6c6-83295e8e3c1a">
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Center">
+									<font fontName="Arial" size="9"/>
+									<paragraph spacingBefore="4"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="b47dab25-3918-4bf7-bfff-a31c952efab6">
+						<jr:columnHeader style="Table_CH" height="40">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="40" uuid="3f66dd07-3331-42ef-8f01-0dcc2d5adb4e">
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font fontName="Arial" isBold="true"/>
+									<paragraph spacingBefore="8"/>
+								</textElement>
+								<text><![CDATA[NAMA PENILAI]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="50">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="120" height="50" uuid="a2fbaba8-632d-4459-bd6c-d31e4888294f">
+									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+								</reportElement>
+								<textElement>
+									<font fontName="Arial" size="9"/>
+									<paragraph leftIndent="4" rightIndent="4" spacingBefore="4"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{STH_EVALUATOR_ID}==null?"":$F{EVA_NAME}+" ("+$F{STH_EVALUATOR_ID}+") "]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="d7848a28-c093-425d-9217-f9b3f9012550">
+						<jr:columnHeader style="Table_CH" height="40">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="40" uuid="685129dd-1613-4f22-9162-e4f1b1cdd4ab">
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font fontName="Arial" isBold="true"/>
+									<paragraph spacingBefore="8"/>
+								</textElement>
+								<text><![CDATA[KAKITANGAN YANG
+DINILAI
+]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="50">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="120" height="50" uuid="c0f439aa-8d36-4b4c-8788-21cf9a3fb7c7">
+									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+								</reportElement>
+								<textElement>
+									<font fontName="Arial" size="9"/>
+									<paragraph leftIndent="4" rightIndent="4" spacingBefore="4"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{STH_STAFF_ID}==null?"":$F{STAFF_NAME}+" ("+$F{STH_STAFF_ID}+") "]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="28cd0e32-e1ff-44f1-baff-4deeec17650f">
+						<jr:columnHeader style="Table_CH" height="40">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="40" uuid="c1d0e0f9-43fc-4293-90ec-0e3dba0983ef">
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font fontName="Arial" isBold="true"/>
+									<paragraph spacingBefore="8"/>
+								</textElement>
+								<text><![CDATA[NAMA KURSUS]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="50">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="120" height="50" uuid="4b847d43-c43f-4265-83ee-fa0e6587f562">
+									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+								</reportElement>
+								<textElement>
+									<font fontName="Arial" size="9"/>
+									<paragraph leftIndent="4" rightIndent="4" spacingBefore="4"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{TH_TRAINING_TITLE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="71" uuid="d764033a-334b-4ee4-9532-93a888367bda">
+						<jr:columnHeader style="Table_CH" height="40">
+							<staticText>
+								<reportElement x="0" y="0" width="71" height="40" uuid="bf0b87df-a6e3-432c-a2d2-7b40ea7b9565">
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font fontName="Arial" isBold="true"/>
+									<paragraph spacingBefore="8"/>
+								</textElement>
+								<text><![CDATA[STATUS REPORT]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="50">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="71" height="50" uuid="7269ec60-7010-4229-bcbf-54294720eecf">
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+									<font fontName="Arial" size="9"/>
+									<paragraph spacingBefore="4"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{STH_HOD_EVALUATION}==null||$F{STH_HOD_EVALUATION}=="N"?"No"+"<br><br>"+($F{EVALUATION_DATE}==null?"":$F{EVALUATION_DATE}):$F{STH_HOD_EVALUATION}!=null||$F{STH_HOD_EVALUATION}=="Y"?"Yes"+"<br><br>"+($F{EVALUATION_DATE}==null?"":$F{EVALUATION_DATE}):($F{EVALUATION_DATE}==null?"":$F{EVALUATION_DATE})]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="94" uuid="2f9c0338-7e23-4c3d-92ff-b503f21ed894">
+						<jr:columnHeader style="Table_CH" height="40">
+							<staticText>
+								<reportElement x="0" y="0" width="94" height="40" uuid="f535f5eb-d24e-4a40-84a4-cdf9d107c193">
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font fontName="Arial" isBold="true"/>
+									<paragraph spacingBefore="8"/>
+								</textElement>
+								<text><![CDATA[TARIKH
+PENGHANTARAN
+]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="50">
+							<componentElement>
+								<reportElement x="0" y="0" width="94" height="50" uuid="391ede78-5c30-458b-8b0d-0d03a7a1fd52"/>
+								<jr:list>
+									<datasetRun subDataset="SEQ" uuid="193cd179-d78c-4989-9326-0b6cc611497d">
+										<datasetParameter name="REFID">
+											<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+										</datasetParameter>
+										<datasetParameter name="STAFF_ID">
+											<datasetParameterExpression><![CDATA[$V{STAFF_ID_VAR}]]></datasetParameterExpression>
+										</datasetParameter>
+										<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+									</datasetRun>
+									<jr:listContents height="50" width="94">
+										<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+											<reportElement x="0" y="20" width="94" height="20" uuid="8f3e9fad-d20e-47b7-9089-70b77daaa345">
+												<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+											</reportElement>
+											<textElement textAlignment="Center">
+												<font fontName="Arial" size="9"/>
+												<paragraph spacingBefore="4"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{TMH_SEQ}.intValue()==1?"(Peringatan 1)":$F{TMH_SEQ}.intValue()==2?"(Peringatan 2)":$F{TMH_SEQ}.intValue()==3?"(Peringatan 3)":""]]></textFieldExpression>
+										</textField>
+										<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+											<reportElement x="0" y="0" width="94" height="20" uuid="9f7781e9-e4d9-4b6a-892e-03e0585995cc">
+												<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+											</reportElement>
+											<textElement textAlignment="Center">
+												<font fontName="Arial" size="9"/>
+												<paragraph spacingBefore="4"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{SEND_DATE}]]></textFieldExpression>
+										</textField>
+									</jr:listContents>
+								</jr:list>
+							</componentElement>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

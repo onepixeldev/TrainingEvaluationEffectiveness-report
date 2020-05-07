@@ -1,0 +1,1176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR132" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f72d0246-f0e3-4ad5-9775-5097e3a664fc">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#CCCCCC">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#CCCCCC">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 2_TD" mode="Opaque" backcolor="#FFFFFF" scaleImage="FillFrame">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 4_TD" mode="Opaque" backcolor="#CCCCCC">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="TRAINING_LIST" uuid="740c3961-a4fb-4739-a095-5a498ba49a99">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="MONTH2" class="java.lang.String"/>
+		<parameter name="YEAR" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT TH_REF_ID,
+TH_TRAINING_TITLE,
+TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE
+FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+WHERE TH_REF_ID = THD_REF_ID
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))]]>
+		</queryString>
+		<field name="TH_REF_ID" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_REF_ID"/>
+		</field>
+		<field name="TH_TRAINING_TITLE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_TRAINING_TITLE"/>
+		</field>
+		<field name="TH_DATE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_DATE"/>
+		</field>
+		<variable name="REFID" class="java.lang.String">
+			<variableExpression><![CDATA[$F{TH_REF_ID}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="COUNT_SUBMIT_REPORT" uuid="6b9c441c-2481-484b-9691-360327ce5808">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<parameter name="MONTH2" class="java.lang.String"/>
+		<parameter name="YEAR" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT COUNT(1) COUNT_SUBMIT, '' DUMMY FROM
+(
+    SELECT STH_STAFF_ID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'Y'
+	AND STH_TRAINING_REFID = $P{REFID} 
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') < '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'Y'
+    AND STH_TRAINING_REFID = $P{REFID}
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL = 'EXTERNAL_AGENCY'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD,STAFF_TRAINING_DETL
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'Y'
+    AND STH_TRAINING_REFID = $P{REFID}
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') >= '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    AND STH_TRAINING_REFID = STD_TRAINING_REFID
+    AND STH_STAFF_ID = STD_STAFF_ID
+    AND STD_ATTEND IN ('Y','A')
+)]]>
+		</queryString>
+		<field name="COUNT_SUBMIT" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="COUNT_SUBMIT"/>
+		</field>
+		<field name="DUMMY" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="DUMMY"/>
+		</field>
+		<variable name="COUNT_SUBMIT_VAR" class="java.math.BigDecimal">
+			<variableExpression><![CDATA[$F{COUNT_SUBMIT}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="COUNT_NOT_SUBMIT_REPORT" uuid="e8f33910-1087-4739-b8ac-38b8034c2a9f">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<parameter name="MONTH2" class="java.lang.String"/>
+		<parameter name="YEAR" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT COUNT(1) COUNT_NOT_SUBMIT, '' DUMMY FROM
+(
+    SELECT STH_STAFF_ID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'N'
+    AND STH_TRAINING_REFID = $P{REFID} 
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') < '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'N'
+    AND STH_TRAINING_REFID = $P{REFID}
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL = 'EXTERNAL_AGENCY'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD,STAFF_TRAINING_DETL
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'N'
+    AND STH_TRAINING_REFID = $P{REFID}
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') >= '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    AND STH_TRAINING_REFID = STD_TRAINING_REFID
+    AND STH_STAFF_ID = STD_STAFF_ID
+    AND STD_ATTEND IN ('Y','A')
+)]]>
+		</queryString>
+		<field name="COUNT_NOT_SUBMIT" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="COUNT_NOT_SUBMIT"/>
+		</field>
+		<field name="DUMMY" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="DUMMY"/>
+		</field>
+		<variable name="COUNT_NSUBMIT_VAR" class="java.math.BigDecimal">
+			<variableExpression><![CDATA[$F{COUNT_NOT_SUBMIT}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="COUNT_ALL" uuid="10794da3-4297-434f-bbe6-4e8c2dd984df">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="MONTH2" class="java.lang.String"/>
+		<parameter name="YEAR" class="java.lang.String"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<parameter name="C_SUBMIT" class="java.math.BigDecimal"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT COUNT(1) COUNT_ALL
+FROM TRAINING_HEAD,TRAINING_HEAD_DETL,STAFF_TRAINING_HEAD
+WHERE TH_REF_ID = THD_REF_ID
+AND TH_REF_ID = STH_TRAINING_REFID
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND TH_STATUS = 'APPROVE'
+AND STH_STATUS = 'APPROVE'
+AND STH_TRAINING_REFID = $P{REFID} 
+AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))]]>
+		</queryString>
+		<field name="COUNT_ALL" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="COUNT_ALL"/>
+		</field>
+		<variable name="PERCENT" class="java.lang.Double">
+			<variableExpression><![CDATA[$F{COUNT_ALL}.doubleValue()==0?0.0:($P{C_SUBMIT}.doubleValue()/$F{COUNT_ALL}.doubleValue())*100]]></variableExpression>
+		</variable>
+		<variable name="ROUND_PERCENT" class="java.lang.Integer">
+			<variableExpression><![CDATA[new BigDecimal($V{PERCENT}).setScale(0, BigDecimal.ROUND_HALF_UP).intValue()]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="COUNT_ALL2" uuid="31bacdfc-2350-4b72-a9fb-64cf4e46706a">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="MONTH2" class="java.lang.String"/>
+		<parameter name="YEAR" class="java.lang.String"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<parameter name="C_NSUBMIT" class="java.math.BigDecimal"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT COUNT(1) COUNT_ALL
+FROM TRAINING_HEAD,TRAINING_HEAD_DETL,STAFF_TRAINING_HEAD
+WHERE TH_REF_ID = THD_REF_ID
+AND TH_REF_ID = STH_TRAINING_REFID
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND TH_STATUS = 'APPROVE'
+AND STH_STATUS = 'APPROVE'
+AND STH_TRAINING_REFID = $P{REFID} 
+AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))]]>
+		</queryString>
+		<field name="COUNT_ALL" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="COUNT_ALL"/>
+		</field>
+		<variable name="PERCENT" class="java.lang.Double">
+			<variableExpression><![CDATA[$F{COUNT_ALL}.doubleValue()==0?0.0:
+($P{C_NSUBMIT}.doubleValue()/$F{COUNT_ALL}.doubleValue())*100]]></variableExpression>
+		</variable>
+		<variable name="ROUND_PERCENT" class="java.lang.Integer">
+			<variableExpression><![CDATA[new BigDecimal($V{PERCENT}).setScale(0, BigDecimal.ROUND_HALF_UP).intValue()]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="SUM_SUBMIT" uuid="0c037d87-8197-4984-a6a7-b6bbda0eedb8">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="MONTH2" class="java.lang.String"/>
+		<parameter name="YEAR" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT COUNT(1) SUM_SUBMIT, '' DUMMY FROM
+(
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'Y'
+	AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') < '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'Y'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL = 'EXTERNAL_AGENCY'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD,STAFF_TRAINING_DETL
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'Y'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') >= '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    AND STH_TRAINING_REFID = STD_TRAINING_REFID
+    AND STH_STAFF_ID = STD_STAFF_ID
+    AND STD_ATTEND IN ('Y','A')
+)]]>
+		</queryString>
+		<field name="SUM_SUBMIT" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="SUM_SUBMIT"/>
+		</field>
+		<field name="DUMMY" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="DUMMY"/>
+		</field>
+	</subDataset>
+	<subDataset name="SUM_NSUBMIT" uuid="8962dc9d-80f7-491d-9649-f47487eb6ac6">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="MONTH2" class="java.lang.String"/>
+		<parameter name="YEAR" class="java.lang.String"/>
+		<parameter name="TOTAL_SUBMIT" class="java.lang.Integer"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT COUNT(1) SUM_NOT_SUBMIT, '' DUMMY FROM
+(
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'N'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') < '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'N'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL = 'EXTERNAL_AGENCY'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD,STAFF_TRAINING_DETL
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'N'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') >= '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    AND STH_TRAINING_REFID = STD_TRAINING_REFID
+    AND STH_STAFF_ID = STD_STAFF_ID
+    AND STD_ATTEND IN ('Y','A')
+)]]>
+		</queryString>
+		<field name="SUM_NOT_SUBMIT" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="SUM_NOT_SUBMIT"/>
+		</field>
+		<field name="DUMMY" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="DUMMY"/>
+		</field>
+		<variable name="SUBMIT_MULTIPLY" class="java.lang.Double">
+			<variableExpression><![CDATA[($P{TOTAL_SUBMIT}.doubleValue()*100)]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="TOTAL_BOTH" class="java.lang.Double">
+			<variableExpression><![CDATA[$F{SUM_NOT_SUBMIT}.doubleValue()+$P{TOTAL_SUBMIT}.doubleValue()]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="SUBMIT_PERCENT" class="java.lang.Double">
+			<variableExpression><![CDATA[$V{SUBMIT_MULTIPLY}/$V{TOTAL_BOTH}]]></variableExpression>
+		</variable>
+		<variable name="ROUND_SUB_PERCENT" class="java.lang.Integer">
+			<variableExpression><![CDATA[new BigDecimal($V{SUBMIT_PERCENT}).setScale(0, BigDecimal.ROUND_HALF_UP).intValue()]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="SUM_SUBMIT2" uuid="7be4436c-d029-43d8-a23c-261db9beee36">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="MONTH2" class="java.lang.String"/>
+		<parameter name="YEAR" class="java.lang.String"/>
+		<parameter name="TOTAL_NSUBMIT" class="java.lang.Integer"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT COUNT(1) SUM_SUBMIT, '' DUMMY FROM
+(
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'Y'
+	AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') < '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'Y'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL = 'EXTERNAL_AGENCY'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD,STAFF_TRAINING_DETL
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'Y'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') >= '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    AND STH_TRAINING_REFID = STD_TRAINING_REFID
+    AND STH_STAFF_ID = STD_STAFF_ID
+    AND STD_ATTEND IN ('Y','A')
+)]]>
+		</queryString>
+		<field name="SUM_SUBMIT" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="SUM_SUBMIT"/>
+		</field>
+		<field name="DUMMY" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="DUMMY"/>
+		</field>
+		<variable name="NSUBMIT_MULTIPLY" class="java.lang.Double">
+			<variableExpression><![CDATA[($P{TOTAL_NSUBMIT}.doubleValue()*100)]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="TOTAL_BOTH" class="java.lang.Double">
+			<variableExpression><![CDATA[$F{SUM_SUBMIT}.doubleValue()+$P{TOTAL_NSUBMIT}.doubleValue()]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+		<variable name="NSUBMIT_PERCENT" class="java.lang.Double">
+			<variableExpression><![CDATA[$V{NSUBMIT_MULTIPLY}/$V{TOTAL_BOTH}]]></variableExpression>
+		</variable>
+		<variable name="ROUND_NSUB_PERCENT" class="java.lang.Integer">
+			<variableExpression><![CDATA[new BigDecimal($V{NSUBMIT_PERCENT}).setScale(0, BigDecimal.ROUND_HALF_UP).intValue()]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="SUM_NSUBMIT2" uuid="99ec22b7-6c3f-4142-9db6-1e788eef9389">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="MONTH2" class="java.lang.String"/>
+		<parameter name="YEAR" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT COUNT(1) SUM_NOT_SUBMIT, '' DUMMY FROM
+(
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'N'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') < '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'N'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL = 'EXTERNAL_AGENCY'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    UNION
+    SELECT STH_STAFF_ID, STH_TRAINING_REFID
+    FROM STAFF_TRAINING_HEAD,TRAINING_HEAD,STAFF_TRAINING_DETL
+    WHERE NVL(STH_HOD_EVALUATION,'N') = 'N'
+    AND STH_TRAINING_REFID IN (
+    SELECT TH_REF_ID
+    FROM TRAINING_HEAD,TRAINING_HEAD_DETL
+    WHERE TH_REF_ID = THD_REF_ID
+    AND NVL(THD_EVALUATION,'N') = 'Y'
+    AND TH_STATUS = 'APPROVE' AND ($P{MONTH2} IS NULL OR ($P{MONTH2} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'mm') = $P{MONTH2}))
+	AND ($P{YEAR} IS NULL OR ($P{YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{YEAR}))
+    )
+    AND STH_STATUS = 'APPROVE'
+    AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+    AND TO_CHAR(TH_DATE_FROM,'yyyy') >= '2016'
+    AND STH_TRAINING_REFID = TH_REF_ID
+    AND STH_TRAINING_REFID = STD_TRAINING_REFID
+    AND STH_STAFF_ID = STD_STAFF_ID
+    AND STD_ATTEND IN ('Y','A')
+)]]>
+		</queryString>
+		<field name="SUM_NOT_SUBMIT" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="SUM_NOT_SUBMIT"/>
+		</field>
+		<field name="DUMMY" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="DUMMY"/>
+		</field>
+	</subDataset>
+	<subDataset name="Dataset1" uuid="c2594625-56ea-486d-825a-4db19015bc49">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="MONTH2" class="java.lang.String"/>
+	<parameter name="YEAR" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM DUAL]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="74" splitType="Stretch">
+			<frame>
+				<reportElement x="455" y="-18" width="100" height="27" uuid="4480e611-37e3-4969-abf3-90589f1799b8"/>
+				<textField evaluationTime="Master">
+					<reportElement x="0" y="0" width="100" height="15" uuid="b6b0059e-dd4f-48f0-bf30-11edd13689b5"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Muka Surat :      "+$V{MASTER_CURRENT_PAGE}+" / "+$V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="0" y="12" width="100" height="15" uuid="a9e92c68-c456-4685-a4e8-4f6caba86e8c">
+						<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[ Report ID : ATR132 ]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="9" width="555" height="32" uuid="3bae54da-99b9-4b6a-be3d-8e3fa7143e6d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STATISTIK PENGHANTARAN LAPORAN KEBERKESANAN
+UNIVERSITI PENDIDIKAN SULTAN IDRIS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="80" height="28" uuid="5045f20a-82c8-486c-9c9e-78067f0f1c1e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BULAN / TAHUN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="41" width="10" height="28" uuid="012887df-acda-4336-8ce3-424cc30ae666"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="90" y="41" width="465" height="28" uuid="133bf347-2e80-4477-ab07-552f906538c4"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{MONTH2}.equals( "01" )?"JANUARI":
+$P{MONTH2}.equals( "02" )?"FEBRUARI":
+$P{MONTH2}.equals( "03" )?"MAC":
+$P{MONTH2}.equals( "04" )?"APRIL":
+$P{MONTH2}.equals( "05" )?"MEI":
+$P{MONTH2}.equals( "06" )?"JUN":
+$P{MONTH2}.equals( "07" )?"JULAI":
+$P{MONTH2}.equals( "08" )?"OGOS":
+$P{MONTH2}.equals( "09" )?"SEPTEMBER":
+$P{MONTH2}.equals( "10" )?"OKTOBER":
+$P{MONTH2}.equals( "11" )?"NOVEMBER":
+$P{MONTH2}.equals( "12" )?"DISEMBER":""
+)+" "+($P{YEAR}==null?"":$P{YEAR})]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="241" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="555" height="200" uuid="5bc7d1fe-f3a5-4f02-ae73-884965e3f279">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="TRAINING_LIST" uuid="3a3d3950-9893-462b-be93-d26b83ceb6ac">
+						<datasetParameter name="MONTH2">
+							<datasetParameterExpression><![CDATA[$P{MONTH2}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="YEAR">
+							<datasetParameterExpression><![CDATA[$P{YEAR}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="311" uuid="caed8ea0-9cab-42c2-923b-d06bd3ab9de4">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [3]"/>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="311" height="30" uuid="e357782e-fb7f-443f-8361-d4b714c8a7f5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+								</textElement>
+								<text><![CDATA[JUMLAH]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:column width="20" uuid="f79a75fe-7f81-4c5f-acff-11c8ebbeb7e6">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:tableFooter style="Table_TH" height="0" rowSpan="1">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							</jr:tableFooter>
+							<jr:columnHeader style="Table_CH" height="70" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="20" height="70" uuid="80f1f555-7985-468c-8e49-ea2a4e39fbe6"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" isBold="true"/>
+									</textElement>
+									<text><![CDATA[BIL]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="35">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="20" height="35" uuid="016ed019-cecd-4586-a255-81e0e9084ba8"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="164" uuid="05e8fdb6-2a3f-40b1-b140-4bb2966172f4">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:tableFooter style="Table_TH" height="0" rowSpan="1">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							</jr:tableFooter>
+							<jr:columnHeader style="Table_CH" height="70" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="164" height="70" uuid="c7ae51ac-ab1b-494d-9efa-a65ed3f181b5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" isBold="true"/>
+									</textElement>
+									<text><![CDATA[NAMA KURSUS]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="35">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="164" height="35" uuid="ce4e9f30-a8c3-4bbd-8b81-1e6cc0952cbe">
+										<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+										<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+										<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+										<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+									</reportElement>
+									<textElement textAlignment="Left" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+										<paragraph leftIndent="4" rightIndent="4" spacingBefore="2" spacingAfter="2"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{TH_TRAINING_TITLE}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="127" uuid="143cac38-f484-4e7e-82b6-ee829d5a3180">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:tableFooter style="Table_TH" height="0" rowSpan="1">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							</jr:tableFooter>
+							<jr:columnHeader style="Table_CH" height="70" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="127" height="70" uuid="db3714f5-2e54-4b16-a3da-2756e00b8acb"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" isBold="true"/>
+									</textElement>
+									<text><![CDATA[TARIKH KURSUS]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="35">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="127" height="35" uuid="2d882656-219d-452f-8b65-0e4499e84c97"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{TH_DATE}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:column width="122" uuid="04f72274-c31e-4efd-be64-172e8fd32d19">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="2">
+							<componentElement>
+								<reportElement x="0" y="0" width="122" height="30" uuid="216ca679-afd2-46ad-870b-8c47f2718dac">
+									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+									<property name="com.jaspersoft.studio.table.style.table_header" value="Table 4_TH"/>
+									<property name="com.jaspersoft.studio.table.style.column_header" value="Table 4_CH"/>
+									<property name="com.jaspersoft.studio.table.style.detail" value="Table 4_TD"/>
+								</reportElement>
+								<jr:table>
+									<datasetRun subDataset="SUM_SUBMIT" uuid="bd87f116-2122-4754-90bd-26df2e39d2ff">
+										<datasetParameter name="MONTH2">
+											<datasetParameterExpression><![CDATA[$P{MONTH2}]]></datasetParameterExpression>
+										</datasetParameter>
+										<datasetParameter name="YEAR">
+											<datasetParameterExpression><![CDATA[$P{YEAR}]]></datasetParameterExpression>
+										</datasetParameter>
+										<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+									</datasetRun>
+									<jr:column width="81" uuid="195dd678-6026-4443-af46-7b1ba7283cff">
+										<jr:detailCell style="Table 4_TD" height="30">
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+												<reportElement x="0" y="0" width="81" height="30" uuid="b9879211-2b8f-481b-ae14-6228933666dc"/>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Arial"/>
+												</textElement>
+												<textFieldExpression><![CDATA[$F{SUM_SUBMIT}]]></textFieldExpression>
+											</textField>
+										</jr:detailCell>
+									</jr:column>
+									<jr:column width="41" uuid="379245d8-0e72-4737-9a43-e9f2bf3711e2">
+										<jr:detailCell style="Table 4_TD" height="30">
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<componentElement>
+												<reportElement x="0" y="0" width="41" height="30" uuid="65bb2084-cb5a-4ddb-a8b7-f3d8dccc0c4a"/>
+												<jr:list printOrder="Vertical">
+													<datasetRun subDataset="SUM_NSUBMIT" uuid="da3ec299-dbdf-4748-9397-53b00bebef1b">
+														<datasetParameter name="MONTH2">
+															<datasetParameterExpression><![CDATA[$P{MONTH2}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="YEAR">
+															<datasetParameterExpression><![CDATA[$P{YEAR}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="TOTAL_SUBMIT">
+															<datasetParameterExpression><![CDATA[$F{SUM_SUBMIT}.intValue()]]></datasetParameterExpression>
+														</datasetParameter>
+														<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+													</datasetRun>
+													<jr:listContents height="30" width="41">
+														<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+															<reportElement x="0" y="0" width="41" height="30" uuid="94450099-9f94-4340-9b50-52f901b21ce8"/>
+															<textElement textAlignment="Center" verticalAlignment="Middle">
+																<font fontName="Arial"/>
+															</textElement>
+															<textFieldExpression><![CDATA[$V{ROUND_SUB_PERCENT}]]></textFieldExpression>
+														</textField>
+													</jr:listContents>
+												</jr:list>
+											</componentElement>
+										</jr:detailCell>
+									</jr:column>
+								</jr:table>
+							</componentElement>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="70" rowSpan="1">
+							<componentElement>
+								<reportElement x="0" y="0" width="122" height="70" uuid="2f5e0bc7-f71d-4c54-a2e3-cafdc3671f16"/>
+								<jr:list printOrder="Vertical">
+									<datasetRun subDataset="Dataset1" uuid="cad8c436-bd22-41f1-b884-18e8e3f3aa33">
+										<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+									</datasetRun>
+									<jr:listContents height="70" width="122">
+										<staticText>
+											<reportElement x="0" y="0" width="81" height="70" uuid="f53e39a8-36de-4796-9476-07ac67235390">
+												<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											</reportElement>
+											<box>
+												<pen lineWidth="0.5"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" isBold="true"/>
+											</textElement>
+											<text><![CDATA[BILANGAN
+YANG
+TELAH
+HANTAR
+LAPORAN]]></text>
+										</staticText>
+										<staticText>
+											<reportElement x="81" y="0" width="41" height="70" uuid="b43ab44f-757a-4fd1-bfc0-5451c7b268ae">
+												<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											</reportElement>
+											<box>
+												<pen lineWidth="0.5"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" isBold="true"/>
+											</textElement>
+											<text><![CDATA[%]]></text>
+										</staticText>
+									</jr:listContents>
+								</jr:list>
+							</componentElement>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="35">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<componentElement>
+								<reportElement x="0" y="0" width="122" height="35" uuid="1755d2e7-83aa-4f72-a870-0d922ad96c32">
+									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+									<property name="com.jaspersoft.studio.table.style.table_header" value="Table 2_TH"/>
+									<property name="com.jaspersoft.studio.table.style.column_header" value="Table 2_CH"/>
+									<property name="com.jaspersoft.studio.table.style.detail" value="Table 2_TD"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								</reportElement>
+								<jr:table>
+									<datasetRun subDataset="COUNT_SUBMIT_REPORT" uuid="c8a1696a-e428-4b85-bde4-094396bbea27">
+										<datasetParameter name="REFID">
+											<datasetParameterExpression><![CDATA[$V{REFID}]]></datasetParameterExpression>
+										</datasetParameter>
+										<datasetParameter name="MONTH2">
+											<datasetParameterExpression><![CDATA[$P{MONTH2}]]></datasetParameterExpression>
+										</datasetParameter>
+										<datasetParameter name="YEAR">
+											<datasetParameterExpression><![CDATA[$P{YEAR}]]></datasetParameterExpression>
+										</datasetParameter>
+										<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+									</datasetRun>
+									<jr:column width="81" uuid="1fd7ffc0-40a9-418c-b1d8-a3e4d0e367a4">
+										<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+										<jr:detailCell style="Table 2_TD" height="35">
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<property name="com.jaspersoft.studio.unit.height" value="px"/>
+											<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+												<reportElement x="0" y="0" width="81" height="35" uuid="853772e2-2826-40c7-9d93-fedf9a4421d7"/>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Arial"/>
+												</textElement>
+												<textFieldExpression><![CDATA[$F{COUNT_SUBMIT}]]></textFieldExpression>
+											</textField>
+										</jr:detailCell>
+									</jr:column>
+									<jr:column width="41" uuid="44d3dffc-2cee-4372-8d70-805f019b8079">
+										<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+										<jr:detailCell style="Table 2_TD" height="35">
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<componentElement>
+												<reportElement x="0" y="0" width="41" height="35" uuid="431e6470-300d-42b6-a254-09b778d968c6"/>
+												<jr:list printOrder="Vertical">
+													<datasetRun subDataset="COUNT_ALL" uuid="2e0e6f7f-595e-450c-b603-f4f27969db2a">
+														<datasetParameter name="MONTH2">
+															<datasetParameterExpression><![CDATA[$P{MONTH2}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="YEAR">
+															<datasetParameterExpression><![CDATA[$P{YEAR}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="REFID">
+															<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="C_SUBMIT">
+															<datasetParameterExpression><![CDATA[$V{COUNT_SUBMIT_VAR}]]></datasetParameterExpression>
+														</datasetParameter>
+														<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+													</datasetRun>
+													<jr:listContents height="35" width="41">
+														<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+															<reportElement x="0" y="0" width="41" height="35" uuid="4e9fee4e-1972-4c81-b74b-6108f1672ea2"/>
+															<textElement textAlignment="Center" verticalAlignment="Middle">
+																<font fontName="Arial"/>
+															</textElement>
+															<textFieldExpression><![CDATA[$F{COUNT_ALL}.intValue()!=0?$V{ROUND_PERCENT}:0]]></textFieldExpression>
+														</textField>
+													</jr:listContents>
+												</jr:list>
+											</componentElement>
+										</jr:detailCell>
+									</jr:column>
+								</jr:table>
+							</componentElement>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="122" uuid="d836dac9-b6ff-4c31-817c-47bf5c74b16f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="2">
+							<componentElement>
+								<reportElement x="0" y="0" width="122" height="30" uuid="edb89284-1211-4b42-94c9-c5efc4bc8cd0">
+									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+									<property name="com.jaspersoft.studio.table.style.table_header" value="Table 4_TH"/>
+									<property name="com.jaspersoft.studio.table.style.column_header" value="Table 4_CH"/>
+									<property name="com.jaspersoft.studio.table.style.detail" value="Table 4_TD"/>
+								</reportElement>
+								<jr:table>
+									<datasetRun subDataset="SUM_NSUBMIT2" uuid="1a3d76ac-80d4-4109-929a-be312fe68c36">
+										<datasetParameter name="MONTH2">
+											<datasetParameterExpression><![CDATA[$P{MONTH2}]]></datasetParameterExpression>
+										</datasetParameter>
+										<datasetParameter name="YEAR">
+											<datasetParameterExpression><![CDATA[$P{YEAR}]]></datasetParameterExpression>
+										</datasetParameter>
+										<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+									</datasetRun>
+									<jr:column width="81" uuid="b0f2d60e-2693-4b21-850e-329a5e6b5d74">
+										<jr:detailCell style="Table 4_TD" height="30">
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+												<reportElement x="0" y="0" width="81" height="30" uuid="ab7a9a13-4886-4849-b762-f8b294b14b9c"/>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Arial"/>
+												</textElement>
+												<textFieldExpression><![CDATA[$F{SUM_NOT_SUBMIT}]]></textFieldExpression>
+											</textField>
+										</jr:detailCell>
+									</jr:column>
+									<jr:column width="41" uuid="6c38a0a6-ec33-44cd-a9d4-22cd276a3bc6">
+										<jr:detailCell style="Table 4_TD" height="30">
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<componentElement>
+												<reportElement x="0" y="0" width="41" height="30" uuid="c9301982-4688-4678-9d71-1ef232fadf61"/>
+												<jr:list printOrder="Vertical">
+													<datasetRun subDataset="SUM_SUBMIT2" uuid="178e09bf-9eda-4907-80da-9b9116ea06fa">
+														<datasetParameter name="MONTH2">
+															<datasetParameterExpression><![CDATA[$P{MONTH2}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="YEAR">
+															<datasetParameterExpression><![CDATA[$P{YEAR}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="TOTAL_NSUBMIT">
+															<datasetParameterExpression><![CDATA[$F{SUM_NOT_SUBMIT}.intValue()]]></datasetParameterExpression>
+														</datasetParameter>
+														<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+													</datasetRun>
+													<jr:listContents height="30" width="41">
+														<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+															<reportElement x="0" y="0" width="41" height="30" uuid="91eebc5c-48fe-4014-8033-88e0bd52d9df"/>
+															<textElement textAlignment="Center" verticalAlignment="Middle">
+																<font fontName="Arial"/>
+															</textElement>
+															<textFieldExpression><![CDATA[$V{ROUND_NSUB_PERCENT}]]></textFieldExpression>
+														</textField>
+													</jr:listContents>
+												</jr:list>
+											</componentElement>
+										</jr:detailCell>
+									</jr:column>
+								</jr:table>
+							</componentElement>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="70" rowSpan="1">
+							<componentElement>
+								<reportElement x="0" y="0" width="122" height="70" uuid="50438c83-bdcb-4295-bc06-6f28a3752bc7"/>
+								<jr:list printOrder="Vertical">
+									<datasetRun subDataset="Dataset1" uuid="9d92f26a-29e4-4ff8-82b5-689c71173a61">
+										<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+									</datasetRun>
+									<jr:listContents height="70" width="122">
+										<staticText>
+											<reportElement x="0" y="0" width="81" height="70" uuid="35304e63-9f9f-412b-bd93-7cbe188f48b2">
+												<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											</reportElement>
+											<box>
+												<pen lineWidth="0.5"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" isBold="true"/>
+											</textElement>
+											<text><![CDATA[BILANGAN YANG
+TIDAK
+HANTAR
+LAPORAN
+]]></text>
+										</staticText>
+										<staticText>
+											<reportElement x="81" y="0" width="41" height="70" uuid="9a2f1943-ef71-4c2b-bfb1-7a00dbe6c2d6">
+												<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											</reportElement>
+											<box>
+												<pen lineWidth="0.5"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" isBold="true"/>
+											</textElement>
+											<text><![CDATA[%]]></text>
+										</staticText>
+									</jr:listContents>
+								</jr:list>
+							</componentElement>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="35">
+							<componentElement>
+								<reportElement x="0" y="0" width="122" height="35" uuid="1b23649c-099c-4a5d-9861-e00ddc8e232d">
+									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+									<property name="com.jaspersoft.studio.table.style.table_header" value="Table 3_TH"/>
+									<property name="com.jaspersoft.studio.table.style.column_header" value="Table 3_CH"/>
+									<property name="com.jaspersoft.studio.table.style.detail" value="Table 3_TD"/>
+								</reportElement>
+								<jr:table>
+									<datasetRun subDataset="COUNT_NOT_SUBMIT_REPORT" uuid="77480b34-0815-4b02-8486-6e3b583785fc">
+										<datasetParameter name="MONTH2">
+											<datasetParameterExpression><![CDATA[$P{MONTH2}]]></datasetParameterExpression>
+										</datasetParameter>
+										<datasetParameter name="YEAR">
+											<datasetParameterExpression><![CDATA[$P{YEAR}]]></datasetParameterExpression>
+										</datasetParameter>
+										<datasetParameter name="REFID">
+											<datasetParameterExpression><![CDATA[$V{REFID}]]></datasetParameterExpression>
+										</datasetParameter>
+										<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+									</datasetRun>
+									<jr:column width="81" uuid="236980b4-0046-4981-800d-05e9242e5c11">
+										<jr:detailCell style="Table 3_TD" height="35">
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+												<reportElement x="0" y="0" width="81" height="35" uuid="81d6c67c-b782-415d-966f-90c1ec962b5e"/>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Arial"/>
+												</textElement>
+												<textFieldExpression><![CDATA[$F{COUNT_NOT_SUBMIT}]]></textFieldExpression>
+											</textField>
+										</jr:detailCell>
+									</jr:column>
+									<jr:column width="41" uuid="2746d284-544e-422c-be7c-5ab74bff93c4">
+										<jr:detailCell style="Table 3_TD" height="35">
+											<property name="com.jaspersoft.studio.unit.width" value="px"/>
+											<property name="com.jaspersoft.studio.unit.height" value="px"/>
+											<componentElement>
+												<reportElement x="0" y="0" width="41" height="35" uuid="1fcafb1d-aac4-473d-90e1-46fe20021ed9"/>
+												<jr:list printOrder="Vertical">
+													<datasetRun subDataset="COUNT_ALL2" uuid="b8665b45-c4aa-4d0e-aa2e-549186c66ff2">
+														<datasetParameter name="C_NSUBMIT">
+															<datasetParameterExpression><![CDATA[$V{COUNT_NSUBMIT_VAR}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="MONTH2">
+															<datasetParameterExpression><![CDATA[$P{MONTH2}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="YEAR">
+															<datasetParameterExpression><![CDATA[$P{YEAR}]]></datasetParameterExpression>
+														</datasetParameter>
+														<datasetParameter name="REFID">
+															<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+														</datasetParameter>
+														<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+													</datasetRun>
+													<jr:listContents height="35" width="41">
+														<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+															<reportElement x="0" y="0" width="41" height="35" uuid="10996c0d-6d66-4c00-9fa2-ebcc40058c96"/>
+															<textElement textAlignment="Center" verticalAlignment="Middle">
+																<font fontName="Arial"/>
+															</textElement>
+															<textFieldExpression><![CDATA[$F{COUNT_ALL}.intValue()!=0?$V{ROUND_PERCENT}:0]]></textFieldExpression>
+														</textField>
+													</jr:listContents>
+												</jr:list>
+											</componentElement>
+										</jr:detailCell>
+									</jr:column>
+								</jr:table>
+							</componentElement>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

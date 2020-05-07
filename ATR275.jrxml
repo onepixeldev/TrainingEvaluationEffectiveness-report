@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR275" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7c2462b6-50be-44b3-854b-74bb9a6f964d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+	<property name="ireport.jasperserver.url" value="http://10.99.4.7:8080/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="syazwan|upsidev"/>
+	<property name="ireport.jasperserver.report.resource" value="/Reports/MyHRIS/HRA_AT/ATR275_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Reports/MyHRIS/HRA_AT/ATR275"/>
+	<style name="Style1" mode="Opaque" backcolor="#CCCCCC">
+		<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+		<box>
+			<pen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="Style2" mode="Transparent" backcolor="#CCCCCC">
+		<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+		<box>
+			<pen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#CCCCCC">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="empty_data" uuid="5eac689b-f73d-4242-b9e2-6eed7ceac8c5">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<subDataset name="PENILAIAN_PENYELIA" uuid="2f586338-0c37-4a9a-b366-c44fd668f21f">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="STAFFID" class="java.lang.String"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT TAC_ORDERING,TAC_DESC,TAS_DESC||' : 'TAS_DESC,TAS_CODE
+FROM TRAINING_ASSESSMENT_CATEGORY,TRAINING_ASSESSMENT_SETUP
+WHERE TAC_CODE = '8'
+AND NVL(TAC_STATUS,'N') = 'Y'
+AND NVL(TAS_STATUS,'N') = 'Y'
+AND TAS_CATEGORY = TAC_CODE
+AND TAS_TYPE = 'EFFECTIVENESS'
+ORDER BY TAS_ORDERING]]>
+		</queryString>
+		<field name="TAC_ORDERING" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="TAC_ORDERING"/>
+		</field>
+		<field name="TAC_DESC" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TAC_DESC"/>
+		</field>
+		<field name="TAS_DESC" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TAS_DESC"/>
+		</field>
+		<field name="TAS_CODE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TAS_CODE"/>
+		</field>
+	</subDataset>
+	<subDataset name="BEFORE" uuid="90ef6319-00a1-4214-9aa9-5aa65ab17734">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="STAFFID" class="java.lang.String"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<parameter name="TAS_CODE" class="java.lang.String"/>
+		<parameter name="TET_CODE" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT STE_MARK_BEFORE
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_STAFF_ID = $P{STAFFID}
+AND STE_TRAINING_REFID = $P{REFID}
+AND STE_TYPE = '9'
+AND STE_CODE = $P{TAS_CODE} 
+AND STE_TITLE = $P{TET_CODE}]]>
+		</queryString>
+		<field name="STE_MARK_BEFORE" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="STE_MARK_BEFORE"/>
+		</field>
+	</subDataset>
+	<subDataset name="PENILAIAN_KENDIRI" uuid="62485ab5-58ee-40ca-a2a9-3335444e96f7">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="STAFFID" class="java.lang.String"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT TAC_ORDERING,
+TAC_DESC,
+TET_CODE||' '||TET_DESC DESCRIPTION,
+TAS_DESC,
+TAS_CODE,
+TET_CODE,
+TAS_NUMBERING
+FROM TRAINING_ASSESSMENT_CATEGORY,TRAINING_EVALUATION_TITLE,TRAINING_ASSESSMENT_SETUP
+WHERE TET_CATEGORY = TAC_CODE
+AND TAC_CODE = '9'
+AND NVL(TAC_STATUS,'N') = 'Y'
+AND NVL(TAS_STATUS,'N') = 'Y'
+AND TAS_CATEGORY = TAC_CODE
+AND TAS_TITLE = TET_CODE
+AND TAS_TYPE = 'EFFECTIVENESS'
+ORDER BY TET_ORDERING,TAS_ORDERING]]>
+		</queryString>
+		<field name="TAC_ORDERING" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="TAC_ORDERING"/>
+		</field>
+		<field name="TAC_DESC" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TAC_DESC"/>
+		</field>
+		<field name="DESCRIPTION" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="DESCRIPTION"/>
+		</field>
+		<field name="TAS_DESC" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TAS_DESC"/>
+		</field>
+		<field name="TAS_CODE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TAS_CODE"/>
+		</field>
+		<field name="TET_CODE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TET_CODE"/>
+		</field>
+		<field name="TAS_NUMBERING" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TAS_NUMBERING"/>
+		</field>
+		<variable name="TAS_CODE" class="java.lang.String">
+			<variableExpression><![CDATA[$F{TAS_CODE}]]></variableExpression>
+		</variable>
+		<variable name="TET_CODE" class="java.lang.String">
+			<variableExpression><![CDATA[$F{TET_CODE}]]></variableExpression>
+		</variable>
+		<group name="TET_CODE">
+			<groupExpression><![CDATA[$F{TET_CODE}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="AFTER" uuid="a207aa7a-b2b5-472a-b3e0-550d00825d65">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="STAFFID" class="java.lang.String"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<parameter name="TAS_CODE" class="java.lang.String"/>
+		<parameter name="TET_CODE" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT STE_MARK_AFTER
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_STAFF_ID = $P{STAFFID}
+AND STE_TRAINING_REFID = $P{REFID}
+AND STE_TYPE = '9'
+AND STE_CODE = $P{TAS_CODE} 
+AND STE_TITLE = $P{TET_CODE}]]>
+		</queryString>
+		<field name="STE_MARK_AFTER" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="STE_MARK_AFTER"/>
+		</field>
+	</subDataset>
+	<subDataset name="DISTINCT_PK" uuid="a550bbbc-78cf-4038-a386-c927a02f2300">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT DISTINCT
+TAC_ORDERING,
+TAC_DESC
+FROM TRAINING_ASSESSMENT_CATEGORY,TRAINING_EVALUATION_TITLE,TRAINING_ASSESSMENT_SETUP
+WHERE TET_CATEGORY = TAC_CODE
+AND TAC_CODE = '9'
+AND NVL(TAC_STATUS,'N') = 'Y'
+AND NVL(TAS_STATUS,'N') = 'Y'
+AND TAS_CATEGORY = TAC_CODE
+AND TAS_TITLE = TET_CODE
+AND TAS_TYPE = 'EFFECTIVENESS']]>
+		</queryString>
+		<field name="TAC_ORDERING" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="TAC_ORDERING"/>
+		</field>
+		<field name="TAC_DESC" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TAC_DESC"/>
+		</field>
+	</subDataset>
+	<subDataset name="REMARK" uuid="03893207-295b-4926-9639-c33817c39d10">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<parameter name="STAFFID" class="java.lang.String"/>
+		<parameter name="TAS_CODE2" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT STE_REMARK
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_STAFF_ID = $P{STAFFID} 
+AND STE_TRAINING_REFID = $P{REFID}
+AND STE_TYPE = '8'
+AND STE_CODE = $P{TAS_CODE2}]]>
+		</queryString>
+		<field name="STE_REMARK" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="STE_REMARK"/>
+		</field>
+	</subDataset>
+	<parameter name="REFID" class="java.lang.String"/>
+	<parameter name="STAFFID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT SM_STAFF_NAME,
+SS_SERVICE_DESC,
+SM_STAFF_ID,
+TH_TRAINING_TITLE,TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
+STH_TRAINING_REFID,
+STH_EVALUATOR_ID,
+GET_STAFF_NAME(STH_EVALUATOR_ID) AS STH_EVALUATOR_NAME,
+TO_CHAR(STH_EVALUATION_DATE,'dd/mm/yyyy') STH_EVALUATION_DATE
+FROM STAFF_MAIN,SERVICE_SCHEME,TRAINING_HEAD_DETL,TRAINING_HEAD,STAFF_TRAINING_HEAD
+WHERE SM_JOB_CODE = SS_SERVICE_CODE
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND TH_REF_ID = THD_REF_ID
+AND STH_TRAINING_REFID = TH_REF_ID
+AND STH_STAFF_ID = SM_STAFF_ID
+AND TH_STATUS = 'APPROVE'
+AND STH_STATUS = 'APPROVE'
+AND SM_STAFF_ID = $P{STAFFID} 
+AND STH_TRAINING_REFID =  $P{REFID}]]>
+	</queryString>
+	<field name="SM_STAFF_NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SM_STAFF_NAME"/>
+	</field>
+	<field name="SS_SERVICE_DESC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SS_SERVICE_DESC"/>
+	</field>
+	<field name="SM_STAFF_ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SM_STAFF_ID"/>
+	</field>
+	<field name="TH_TRAINING_TITLE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TH_TRAINING_TITLE"/>
+	</field>
+	<field name="TH_DATE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TH_DATE"/>
+	</field>
+	<field name="STH_TRAINING_REFID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STH_TRAINING_REFID"/>
+	</field>
+	<field name="STH_EVALUATOR_ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STH_EVALUATOR_ID"/>
+	</field>
+	<field name="STH_EVALUATOR_NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STH_EVALUATOR_NAME"/>
+	</field>
+	<field name="STH_EVALUATION_DATE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STH_EVALUATION_DATE"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="113" splitType="Stretch">
+			<frame>
+				<reportElement x="15" y="20" width="510" height="75" uuid="29a384d3-7611-4867-994c-ec7eab30cd22"/>
+				<image>
+					<reportElement x="0" y="3" width="150" height="71" uuid="52af7414-1f80-4cd0-80ab-d7c63067765b"/>
+					<imageExpression><![CDATA["repo:/Reports/Image/logo_upsi.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="170" y="20" width="340" height="36" uuid="a13d18fd-6197-4b48-bd06-88004cd094ba"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BORANG PENILAIAN KEBERKESANAN LATIHAN TAHUNAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="170" y="37" width="340" height="36" uuid="8c723ead-5cdf-4f34-be8a-e6300a7ad228"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BAHAGIAN PEMBANGUNAN SUMBER MANUSIA, JABATAN PENDAFTAR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="170" y="47" width="340" height="30" uuid="780cdf8e-5438-45ec-a998-a5a34c23d753"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tel : 05 - 450 6494 / 6907 / 6413 Faks : 05 - 459 5488]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="455" y="-14" width="100" height="27" uuid="3f0bf52c-8980-41fd-b15d-35dbbbe8e39b"/>
+				<textField evaluationTime="Master">
+					<reportElement x="0" y="12" width="100" height="15" uuid="3c1b2d20-9558-405f-9086-b8c5de52e3f8"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Arial" size="7" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Pindaan : 10 Ms   "+$V{MASTER_CURRENT_PAGE}+" / "+$V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="25" y="0" width="75" height="15" uuid="ab02e175-8ec2-4f71-b4f5-0b1fbf17429d"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="false"/>
+					</textElement>
+					<text><![CDATA[BSM/SM4/006]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="34">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 2]]></printWhenExpression>
+			<frame>
+				<reportElement x="455" y="-14" width="100" height="27" uuid="c27f9025-90ac-40a8-b574-adfb3f24c034"/>
+				<textField evaluationTime="Master">
+					<reportElement x="0" y="12" width="100" height="15" uuid="abfd8a25-2bac-4c44-a5c9-20293aa8ff42"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Arial" size="7" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Pindaan : 09 Ms   "+$V{MASTER_CURRENT_PAGE}+" / "+$V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="25" y="0" width="75" height="15" uuid="16ded308-40c3-4bf4-8b1d-7bfe5d579de5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="false"/>
+					</textElement>
+					<text><![CDATA[BSM/SM4/006]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="768" splitType="Immediate">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="537" uuid="792049e1-e8fc-4c41-91db-5b64e226b666"/>
+				<frame>
+					<reportElement positionType="Float" x="0" y="110" width="555" height="100" uuid="86d8ce5f-986a-4340-86fc-ac35d0b4aab0"/>
+					<frame>
+						<reportElement x="0" y="0" width="555" height="20" uuid="199a9f6a-3238-4aa9-918c-63812bb3e6f6"/>
+						<componentElement>
+							<reportElement x="0" y="0" width="555" height="20" uuid="ccde7ccd-d65d-4c08-9e8d-da3f94d10981"/>
+							<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+								<datasetRun subDataset="DISTINCT_PK" uuid="a3759d69-20de-499c-be24-c9e79907d02d">
+									<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+								</datasetRun>
+								<jr:listContents height="20" width="555">
+									<textField isBlankWhenNull="true">
+										<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="74d40e28-b579-4b8c-aee4-a6d8d8b7ce29">
+											<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+										</reportElement>
+										<textElement verticalAlignment="Middle">
+											<font fontName="Arial" size="9" isBold="true"/>
+											<paragraph leftIndent="4"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{TAC_ORDERING}+". "+$F{TAC_DESC}]]></textFieldExpression>
+									</textField>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="20" width="555" height="90" uuid="5d03a9c1-9f94-4890-92ec-f7ea19e52d67"/>
+						<staticText>
+							<reportElement x="0" y="0" width="555" height="20" uuid="849edd90-8851-479f-bd54-45bd68943617">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[Diisi oleh peserta selepas menghadiri latihan]]></text>
+						</staticText>
+						<componentElement>
+							<reportElement x="110" y="20" width="340" height="40" uuid="3889ee96-d519-47ec-82a2-888f9280d4d0">
+								<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+								<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+								<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+								<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+							</reportElement>
+							<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+								<datasetRun subDataset="empty_data" uuid="ced109f0-a217-4218-be41-2439296aa25b">
+									<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+								</datasetRun>
+								<jr:column width="70" uuid="a822769f-f288-4357-84ad-5418b8fa862b">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+									<jr:columnHeader style="Style1" height="20" rowSpan="1">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+										<staticText>
+											<reportElement x="0" y="0" width="70" height="20" uuid="849628ae-557f-4ea8-83cb-3920a0eeb7dc"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[1]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Style2" height="20">
+										<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+										<staticText>
+											<reportElement x="0" y="0" width="70" height="20" uuid="86ccf4e0-ee19-4f24-bdf8-996f0bf1bca3"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[Lemah]]></text>
+										</staticText>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="68" uuid="03a5fda1-68a4-4467-9443-619317c6f2ef">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+									<jr:columnHeader style="Style1" height="20" rowSpan="1">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+										<staticText>
+											<reportElement x="0" y="0" width="68" height="20" uuid="06c5e900-5e97-49a9-ad83-c7f410c4deb7"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[2]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Style2" height="20">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+										<staticText>
+											<reportElement x="0" y="0" width="68" height="20" uuid="877f7935-0776-46ea-842a-385f66c98844"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[Kurang Baik]]></text>
+										</staticText>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="70" uuid="ed83e0f9-3fb7-4993-9b06-758959febbbf">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+									<jr:columnHeader style="Style1" height="20" rowSpan="1">
+										<staticText>
+											<reportElement x="0" y="0" width="70" height="20" uuid="6c97d4fa-dc7a-469c-ad9e-9902103d8260"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[3]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Style2" height="20">
+										<staticText>
+											<reportElement x="0" y="0" width="70" height="20" uuid="2a20b8a7-e1e8-4be0-97a8-70c6b3a41dd5"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[Sederhana]]></text>
+										</staticText>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="66" uuid="268b9f5e-f251-4aba-821b-8986ec05a2e2">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+									<jr:columnHeader style="Style1" height="20" rowSpan="1">
+										<staticText>
+											<reportElement x="0" y="0" width="66" height="20" uuid="861a7412-174e-4836-a8da-99ff30dc226f"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[4]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Style2" height="20">
+										<staticText>
+											<reportElement x="0" y="0" width="66" height="20" uuid="d906813c-341b-42ce-a6d1-3d532b6aac9b"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[Baik]]></text>
+										</staticText>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="66" uuid="827cc6e5-b7f2-4f74-8de6-d9a05a4e0ff2">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+									<jr:columnHeader style="Style1" height="20" rowSpan="1">
+										<staticText>
+											<reportElement x="0" y="0" width="66" height="20" uuid="4846b825-41d7-492f-865d-f0c15e425e96"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[5]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Style2" height="20">
+										<staticText>
+											<reportElement x="0" y="0" width="66" height="20" uuid="d32ab20d-e0d7-458e-a7fd-294027a7b930"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Arial" size="9" isBold="true"/>
+											</textElement>
+											<text><![CDATA[Amat Baik]]></text>
+										</staticText>
+									</jr:detailCell>
+								</jr:column>
+							</jr:table>
+						</componentElement>
+						<staticText>
+							<reportElement x="5" y="20" width="105" height="40" uuid="82c26a1d-3fd0-4754-a26c-e201b58c610d">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<box>
+								<pen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9" isBold="true"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[SKALA PENGUKURAN]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="0" y="70" width="555" height="20" uuid="2a2f1b7a-3a58-43bf-9d2e-0530ef735a9b">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[Sila masukkan nilai markah di dalam ruang yang berkenaan.]]></text>
+						</staticText>
+					</frame>
+				</frame>
+				<frame>
+					<reportElement positionType="Float" x="0" y="0" width="555" height="100" uuid="dc2491b2-5398-4e4a-8bdb-2aba3fc11f62"/>
+					<staticText>
+						<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="03705188-d970-492f-97aa-673812a83f65">
+							<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+						</reportElement>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" size="9" isBold="true"/>
+							<paragraph leftIndent="4"/>
+						</textElement>
+						<text><![CDATA[1. MAKLUMAT AM]]></text>
+					</staticText>
+					<frame>
+						<reportElement positionType="Float" x="0" y="20" width="555" height="20" uuid="9be2ce47-f057-4b5f-8561-63218eda7e41"/>
+						<staticText>
+							<reportElement x="0" y="0" width="165" height="20" uuid="9e20caf8-010e-46dc-934d-e26715f531da">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[1.1  Nama Peserta  ]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="165" y="0" width="3" height="20" uuid="361fa339-0e33-4fc7-8ce0-a85acb4f84db">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="0"/>
+							</textElement>
+							<text><![CDATA[:]]></text>
+						</staticText>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="168" y="0" width="387" height="20" uuid="a7977b6f-16a6-4eab-91c4-e0fab6c74295">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{SM_STAFF_NAME}]]></textFieldExpression>
+						</textField>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="35" width="555" height="20" uuid="436ee66a-21ba-4f16-a699-0ab85aba4741"/>
+						<staticText>
+							<reportElement x="165" y="0" width="3" height="20" uuid="6ace1ff6-b272-46b1-9878-4de0f17844d5">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="0"/>
+							</textElement>
+							<text><![CDATA[:]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="0" y="0" width="165" height="20" uuid="8197ba7d-85e7-4100-8681-cb2ec9334a8a">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[1.2  Jawatan]]></text>
+						</staticText>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="168" y="0" width="387" height="20" uuid="4adcfe5d-b69a-4c55-a88c-af570e7ec31c">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{SS_SERVICE_DESC}]]></textFieldExpression>
+						</textField>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="50" width="555" height="20" uuid="dda61e22-7a0b-409b-bccf-27e39279d687"/>
+						<staticText>
+							<reportElement x="165" y="0" width="3" height="20" uuid="17d5405d-a2f5-4a4a-9f46-fec08bc724dc">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="0"/>
+							</textElement>
+							<text><![CDATA[:]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="0" y="0" width="165" height="20" uuid="c36e30d7-2466-4fd9-929c-df4ed3e5045c">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[1.3  No Staf]]></text>
+						</staticText>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="168" y="0" width="387" height="20" uuid="cb211b05-a5f8-4dd5-b629-1709bb26c854">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{SM_STAFF_ID}]]></textFieldExpression>
+						</textField>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="65" width="555" height="20" uuid="3504477d-d4b1-40e5-ba44-cbde02b06204"/>
+						<staticText>
+							<reportElement x="165" y="0" width="3" height="20" uuid="5df584ec-7f76-4608-a0d5-8cb4f85aeb67">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="0"/>
+							</textElement>
+							<text><![CDATA[:]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="0" y="0" width="165" height="20" uuid="f805af1f-b450-4503-944b-791b94dee1bc">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[1.4  Kursus]]></text>
+						</staticText>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="168" y="0" width="387" height="20" uuid="73325eb6-a2cf-4252-a25d-56aab6c68fca">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{TH_TRAINING_TITLE}]]></textFieldExpression>
+						</textField>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="80" width="555" height="20" uuid="623d5341-aac0-4b9f-a209-bc838a398b70"/>
+						<staticText>
+							<reportElement x="165" y="0" width="3" height="20" uuid="041ab43f-ace5-4fd4-89a8-1a6a6d506210">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="0"/>
+							</textElement>
+							<text><![CDATA[:]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="0" y="0" width="165" height="20" uuid="31d28742-b00f-477b-b887-de54d437acc8">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[1.5  Tarikh Kursus]]></text>
+						</staticText>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="168" y="0" width="387" height="20" uuid="4265d0ad-3e9b-40b3-9828-6194d416dd8e">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{TH_DATE}]]></textFieldExpression>
+						</textField>
+					</frame>
+				</frame>
+				<componentElement>
+					<reportElement positionType="Float" x="0" y="220" width="555" height="317" uuid="bf905dc8-6849-4ef0-a009-7332e64f92fa">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="PENILAIAN_KENDIRI" uuid="cf570ede-6a9e-439b-a7c2-822cca4c8e02">
+							<datasetParameter name="STAFFID">
+								<datasetParameterExpression><![CDATA[$P{STAFFID}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="REFID">
+								<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:columnGroup width="340" uuid="5e64971c-c442-4c97-93f3-421b2a9ee269">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [2]"/>
+							<jr:groupHeader groupName="TET_CODE">
+								<jr:cell style="Table_CH" height="20" rowSpan="1">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="340" height="20" uuid="97ad74ca-a792-4c28-bd3a-006bd126c33a">
+											<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+										</reportElement>
+										<textElement verticalAlignment="Middle">
+											<font fontName="Arial" size="9" isBold="true"/>
+											<paragraph leftIndent="4"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{DESCRIPTION}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:column width="31" uuid="ba7abcbe-c4cc-44af-8df3-67e00d841cb2">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+								<jr:groupHeader groupName="TET_CODE">
+									<jr:cell style="Table_CH" height="0" rowSpan="1">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="31" height="30" uuid="1b497fbf-713e-4c8b-ade0-0c821d264476">
+											<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+											<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Top">
+											<font fontName="Arial" size="9" isBold="false"/>
+											<paragraph leftIndent="0" spacingBefore="4" spacingAfter="0"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{TAS_NUMBERING}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="309" uuid="e73fcb3b-b9e0-4b27-b799-8669c40d554e">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+								<jr:groupHeader groupName="TET_CODE">
+									<jr:cell style="Table_CH" height="0" rowSpan="1">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="309" height="30" uuid="119557ce-81ec-4671-a722-1280a8f1c1cc">
+											<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+											<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+										</reportElement>
+										<textElement textAlignment="Left" verticalAlignment="Top">
+											<font fontName="Arial" size="9" isBold="false"/>
+											<paragraph leftIndent="4" spacingBefore="4" spacingAfter="0"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{TAS_DESC}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+						<jr:column width="107" uuid="8b63d5ba-b614-49ad-a5b8-87e66b28046b">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:groupHeader groupName="TET_CODE">
+								<jr:cell style="Table_CH" height="20" rowSpan="2">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									<staticText>
+										<reportElement x="0" y="0" width="107" height="20" uuid="af2e318e-ee72-4ee3-ba97-5927cd4072a1"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Arial" size="9" isBold="true"/>
+										</textElement>
+										<text><![CDATA[SEBELUM]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:detailCell style="Table_TD" height="30">
+								<componentElement>
+									<reportElement x="0" y="0" width="107" height="30" uuid="404b4a8e-75f3-4b25-82f2-c865ed10bdae"/>
+									<jr:list printOrder="Vertical">
+										<datasetRun subDataset="BEFORE" uuid="bf498b6e-f8a3-4dc9-99a0-60f348ea07a1">
+											<datasetParameter name="REFID">
+												<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+											</datasetParameter>
+											<datasetParameter name="STAFFID">
+												<datasetParameterExpression><![CDATA[$P{STAFFID}]]></datasetParameterExpression>
+											</datasetParameter>
+											<datasetParameter name="TAS_CODE">
+												<datasetParameterExpression><![CDATA[$V{TAS_CODE}]]></datasetParameterExpression>
+											</datasetParameter>
+											<datasetParameter name="TET_CODE">
+												<datasetParameterExpression><![CDATA[$F{TET_CODE}]]></datasetParameterExpression>
+											</datasetParameter>
+											<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+										</datasetRun>
+										<jr:listContents height="30" width="107">
+											<textField isBlankWhenNull="true">
+												<reportElement x="0" y="0" width="107" height="30" uuid="3ba2b0fb-d497-4a5b-bf9a-35e8b2183b5a">
+													<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+													<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+													<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+												</reportElement>
+												<textElement textAlignment="Center" verticalAlignment="Top">
+													<font fontName="Arial" size="9" isBold="false"/>
+													<paragraph leftIndent="0" spacingBefore="4" spacingAfter="0"/>
+												</textElement>
+												<textFieldExpression><![CDATA[$F{STE_MARK_BEFORE}]]></textFieldExpression>
+											</textField>
+										</jr:listContents>
+									</jr:list>
+								</componentElement>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="108" uuid="5956d663-66d3-4531-bf63-94316e66c6f8">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+							<jr:groupHeader groupName="TET_CODE">
+								<jr:cell style="Table_CH" height="20" rowSpan="2">
+									<staticText>
+										<reportElement x="0" y="0" width="108" height="20" uuid="3c55777c-3bce-4653-a22f-ef7660d0f218"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Arial" size="9" isBold="true"/>
+										</textElement>
+										<text><![CDATA[SELEPAS]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:detailCell style="Table_TD" height="30">
+								<componentElement>
+									<reportElement x="0" y="0" width="108" height="30" uuid="52fc0b93-4eaa-4112-8c34-4d3cc654c957"/>
+									<jr:list printOrder="Vertical">
+										<datasetRun subDataset="AFTER" uuid="456d09c9-1234-456b-98f1-b232edf0aa6e">
+											<datasetParameter name="REFID">
+												<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+											</datasetParameter>
+											<datasetParameter name="STAFFID">
+												<datasetParameterExpression><![CDATA[$P{STAFFID}]]></datasetParameterExpression>
+											</datasetParameter>
+											<datasetParameter name="TAS_CODE">
+												<datasetParameterExpression><![CDATA[$V{TAS_CODE}]]></datasetParameterExpression>
+											</datasetParameter>
+											<datasetParameter name="TET_CODE">
+												<datasetParameterExpression><![CDATA[$F{TET_CODE}]]></datasetParameterExpression>
+											</datasetParameter>
+											<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+										</datasetRun>
+										<jr:listContents height="30" width="108">
+											<textField isBlankWhenNull="true">
+												<reportElement x="0" y="0" width="108" height="30" uuid="3b08efce-4fce-4636-b94c-84c4cc553d1c">
+													<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+													<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+													<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+												</reportElement>
+												<textElement textAlignment="Center" verticalAlignment="Top">
+													<font fontName="Arial" size="9" isBold="false"/>
+													<paragraph leftIndent="0" spacingBefore="4" spacingAfter="0"/>
+												</textElement>
+												<textFieldExpression><![CDATA[$F{STE_MARK_AFTER}]]></textFieldExpression>
+											</textField>
+										</jr:listContents>
+									</jr:list>
+								</componentElement>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</frame>
+			<break>
+				<reportElement x="0" y="538" width="100" height="1" uuid="d9b06e14-d311-4dc8-b6b5-73e1ec820ee0"/>
+			</break>
+			<frame>
+				<reportElement x="0" y="550" width="555" height="218" uuid="0f9e0bcd-419f-4dcb-a325-fd24954fbaad"/>
+				<frame>
+					<reportElement positionType="Float" x="0" y="0" width="555" height="180" uuid="9a7fd56c-822e-4157-8f15-97d5c96a2651"/>
+					<frame>
+						<reportElement positionType="Float" x="0" y="0" width="555" height="20" uuid="07eb6057-1b19-435d-9c5c-1595677e8f2d"/>
+						<componentElement>
+							<reportElement x="0" y="0" width="555" height="20" uuid="3038e5ac-28ff-422b-a790-35fe0b186354"/>
+							<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+								<datasetRun subDataset="PENILAIAN_PENYELIA" uuid="8cd4c019-93d0-49a5-afd0-fd036611c558">
+									<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+								</datasetRun>
+								<jr:listContents height="20" width="555">
+									<textField isBlankWhenNull="true">
+										<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="76c8bf1e-1e5f-47d6-bb45-c82d5480683b">
+											<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+										</reportElement>
+										<textElement verticalAlignment="Middle">
+											<font fontName="Arial" size="9" isBold="true"/>
+											<paragraph leftIndent="4"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{TAC_ORDERING}+". "+$F{TAC_DESC}]]></textFieldExpression>
+									</textField>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+					</frame>
+					<staticText>
+						<reportElement positionType="Float" x="0" y="20" width="555" height="20" uuid="3e528328-07fa-4f31-9c81-9289b3335e38">
+							<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+						</reportElement>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Arial" size="9"/>
+							<paragraph leftIndent="4"/>
+						</textElement>
+						<text><![CDATA[Diisi oleh Penyelia selepas diisi oleh kakitangan seliaan menghadiri latihan.]]></text>
+					</staticText>
+					<frame>
+						<reportElement positionType="Float" x="0" y="40" width="555" height="20" uuid="b6b95940-b4a7-4a26-b526-025602c5e1cb"/>
+						<componentElement>
+							<reportElement x="0" y="0" width="555" height="20" uuid="9a23ea41-9b21-44a1-a091-0c4abcd19942"/>
+							<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+								<datasetRun subDataset="PENILAIAN_PENYELIA" uuid="0ea3efd1-a079-4b2e-bd21-6af32f91c6d8">
+									<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+								</datasetRun>
+								<jr:listContents height="20" width="555">
+									<textField isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="555" height="20" uuid="a60254e3-a644-4c85-b56f-6b74dd2c4954">
+											<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+										</reportElement>
+										<textElement verticalAlignment="Middle">
+											<font fontName="Arial" size="9"/>
+											<paragraph leftIndent="4"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{TAS_DESC}]]></textFieldExpression>
+									</textField>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="0" y="60" width="555" height="120" uuid="5ae93527-0be7-4dd3-bd96-ef430de5d96d">
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.5"/>
+						</box>
+						<componentElement>
+							<reportElement x="0" y="0" width="555" height="120" uuid="93ec40b9-5651-4dac-b4ca-089c1f27396c"/>
+							<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+								<datasetRun subDataset="PENILAIAN_PENYELIA" uuid="22cb835e-03cb-4cf4-b0b9-361adc9ded2e">
+									<datasetParameter name="STAFFID">
+										<datasetParameterExpression><![CDATA[$P{STAFFID}]]></datasetParameterExpression>
+									</datasetParameter>
+									<datasetParameter name="REFID">
+										<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+									</datasetParameter>
+									<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+								</datasetRun>
+								<jr:listContents height="120" width="555">
+									<componentElement>
+										<reportElement x="0" y="0" width="555" height="120" uuid="9cad5420-e351-4bf6-9e7e-2a32051c878f"/>
+										<jr:list printOrder="Vertical">
+											<datasetRun subDataset="REMARK" uuid="41c910e8-5842-48eb-929d-0c5323377743">
+												<datasetParameter name="TAS_CODE2">
+													<datasetParameterExpression><![CDATA[$F{TAS_CODE}]]></datasetParameterExpression>
+												</datasetParameter>
+												<datasetParameter name="REFID">
+													<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+												</datasetParameter>
+												<datasetParameter name="STAFFID">
+													<datasetParameterExpression><![CDATA[$P{STAFFID}]]></datasetParameterExpression>
+												</datasetParameter>
+												<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+											</datasetRun>
+											<jr:listContents height="120" width="555">
+												<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+													<reportElement x="0" y="0" width="555" height="120" uuid="13f35369-cc5f-41a3-9cf9-e86b790185ab">
+														<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+														<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+													</reportElement>
+													<textElement textAlignment="Left" verticalAlignment="Top">
+														<font fontName="Arial" size="9"/>
+														<paragraph leftIndent="4" spacingBefore="4"/>
+													</textElement>
+													<textFieldExpression><![CDATA[$F{STE_REMARK}]]></textFieldExpression>
+												</textField>
+											</jr:listContents>
+										</jr:list>
+									</componentElement>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+					</frame>
+				</frame>
+				<frame>
+					<reportElement positionType="Float" x="0" y="198" width="555" height="20" uuid="de28ed8f-4e88-4f21-98d2-03af52ea11ae"/>
+					<frame>
+						<reportElement positionType="Float" x="0" y="0" width="270" height="20" uuid="21e5b0e1-d162-4b3b-8131-42f73293af99"/>
+						<staticText>
+							<reportElement x="0" y="0" width="70" height="20" uuid="f9809e4b-2309-48e0-8e27-7b5959559162">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[Disahkan oleh : ]]></text>
+						</staticText>
+						<line>
+							<reportElement x="70" y="17" width="200" height="1" uuid="12ba7189-1e7e-4c4b-872f-625570e70e92">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							</reportElement>
+							<graphicElement>
+								<pen lineStyle="Dotted"/>
+							</graphicElement>
+						</line>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="70" y="0" width="199" height="20" uuid="4e10d94d-7eae-4903-9d03-ab6b66430f48">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="0"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{STH_EVALUATOR_NAME}]]></textFieldExpression>
+						</textField>
+					</frame>
+					<frame>
+						<reportElement positionType="Float" x="415" y="0" width="140" height="20" uuid="59697d10-4afc-45b7-b52f-2809e8370034"/>
+						<staticText>
+							<reportElement x="0" y="0" width="40" height="20" uuid="31264852-30ba-47b1-b8ee-6ae8db580d86">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="4"/>
+							</textElement>
+							<text><![CDATA[Tarikh : ]]></text>
+						</staticText>
+						<line>
+							<reportElement x="40" y="17" width="100" height="1" uuid="782c9fa4-bd24-46bb-b385-2b46169b6148">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							</reportElement>
+							<graphicElement>
+								<pen lineStyle="Dotted"/>
+							</graphicElement>
+						</line>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="40" y="0" width="99" height="20" uuid="f08535bb-b303-46c7-8906-da3aeb83135a">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="9"/>
+								<paragraph leftIndent="0"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{STH_EVALUATION_DATE}]]></textFieldExpression>
+						</textField>
+					</frame>
+				</frame>
+			</frame>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="229">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="30" uuid="cfcccb1f-a072-4475-be74-472728a8add4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Monospaced" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PELUANG LATIHAN RUANG PEMBELAJARAN]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>
