@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR185X" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71c1063e-3c3c-4752-89bc-690cabddfee2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+	<property name="ireport.jasperserver.url" value="http://10.99.4.7:8080/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="syazwan|upsidev"/>
+	<property name="ireport.jasperserver.report.resource" value="/Reports/MyHRIS/HRA_AT/ATR185X_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Reports/MyHRIS/HRA_AT/ATR185X"/>
+	<property name="net.sf.jasperreports.export.xls.collapse.row.span" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.column.width.ratio" value="2"/>
+	<property name="net.sf.jasperreports.export.xls.font.size.fix.enabled" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.graphics" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.one.page.per.sheet" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<property name="net.sf.jasperreports.export.ignore.page.margins" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="LIST" uuid="efc877fc-0a7d-4b77-9d2f-e4b62fa230fa">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+		<parameter name="REFID" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT TH_REF_ID, TH_TRAINING_TITLE, TH_DATE, TH_TRAINING_VENUE,
+SM_STAFF_NAME, STH_STAFF_ID, SS_SERVICE_DESC, SM_DEPT_CODE,
+POSTK1, POSTK2, POSTK3, POSTA1, POSTA2, POSTA3, POSTP1,POSTP2, POSTP3
+ FROM
+(
+SELECT TH_REF_ID, STH_STAFF_ID,SM_STAFF_NAME,
+SS_SERVICE_DESC,SM_DEPT_CODE,TH_TRAINING_TITLE,
+TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
+STH_TRAINING_REFID,TH_TRAINING_VENUE
+FROM STAFF_MAIN,SERVICE_SCHEME,TRAINING_HEAD_DETL,TRAINING_HEAD,STAFF_TRAINING_HEAD
+WHERE SM_JOB_CODE = SS_SERVICE_CODE
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND TH_REF_ID = THD_REF_ID
+AND STH_TRAINING_REFID = TH_REF_ID
+AND STH_STAFF_ID = SM_STAFF_ID
+AND TH_STATUS = 'APPROVE'
+AND STH_STATUS = 'APPROVE'
+AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+AND TO_CHAR(TH_DATE_FROM,'yyyy') < '2016'
+AND ($P{REFID}  IS NULL OR ($P{REFID} IS NOT NULL AND TH_REF_ID = $P{REFID}))
+AND STH_SUBMIT_DATE IS NOT NULL
+UNION
+SELECT TH_REF_ID, STH_STAFF_ID,SM_STAFF_NAME,
+SS_SERVICE_DESC,SM_DEPT_CODE,TH_TRAINING_TITLE,
+TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
+STH_TRAINING_REFID,TH_TRAINING_VENUE
+FROM STAFF_MAIN,SERVICE_SCHEME,TRAINING_HEAD_DETL,TRAINING_HEAD,STAFF_TRAINING_HEAD
+WHERE SM_JOB_CODE = SS_SERVICE_CODE
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND TH_REF_ID = THD_REF_ID
+AND STH_TRAINING_REFID = TH_REF_ID
+AND STH_STAFF_ID = SM_STAFF_ID
+AND TH_STATUS = 'APPROVE'
+AND STH_STATUS = 'APPROVE'
+AND TH_INTERNAL_EXTERNAL = 'EXTERNAL_AGENCY'
+AND ($P{REFID} IS NULL OR ($P{REFID} IS NOT NULL AND TH_REF_ID = $P{REFID}))
+AND STH_SUBMIT_DATE IS NOT NULL
+UNION
+SELECT TH_REF_ID, STH_STAFF_ID,SM_STAFF_NAME,
+SS_SERVICE_DESC,SM_DEPT_CODE,TH_TRAINING_TITLE,
+TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
+STH_TRAINING_REFID,TH_TRAINING_VENUE
+FROM STAFF_MAIN,SERVICE_SCHEME,TRAINING_HEAD_DETL,TRAINING_HEAD,STAFF_TRAINING_HEAD,STAFF_TRAINING_DETL
+WHERE SM_JOB_CODE = SS_SERVICE_CODE
+AND NVL(THD_EVALUATION,'N') = 'Y'
+AND TH_REF_ID = THD_REF_ID
+AND STH_TRAINING_REFID = TH_REF_ID
+AND STH_STAFF_ID = SM_STAFF_ID
+AND TH_STATUS = 'APPROVE'
+AND STH_STATUS = 'APPROVE'
+AND TH_INTERNAL_EXTERNAL <> 'EXTERNAL_AGENCY'
+AND TO_CHAR(TH_DATE_FROM,'yyyy') >= '2016'
+AND STH_TRAINING_REFID = STD_TRAINING_REFID
+AND STH_STAFF_ID = STD_STAFF_ID
+AND STD_ATTEND IN ('Y','A')
+AND ($P{REFID} IS NULL OR ($P{REFID} IS NOT NULL AND TH_REF_ID = $P{REFID}))
+AND STH_SUBMIT_DATE IS NOT NULL
+ORDER BY SM_STAFF_NAME
+)
+--K1
+LEFT JOIN (
+SELECT STE_MARK_AFTER POSTK1, STE_STAFF_ID SID1, STE_TRAINING_REFID STR1
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'b i.'
+AND STE_TITLE = 'B'
+) ON (SID1 = STH_STAFF_ID AND STR1 = $P{REFID})
+--K2
+LEFT JOIN (
+SELECT STE_MARK_AFTER POSTK2, STE_STAFF_ID SID2, STE_TRAINING_REFID STR2
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'b ii.'
+AND STE_TITLE = 'B'
+) ON (SID2 = STH_STAFF_ID AND STR2 = $P{REFID})
+--K3
+LEFT JOIN (
+SELECT STE_MARK_AFTER POSTK3, STE_STAFF_ID SID3, STE_TRAINING_REFID STR3
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'b iii.'
+AND STE_TITLE = 'B'
+) ON (SID3 = STH_STAFF_ID AND STR3 = $P{REFID})
+--A1
+LEFT JOIN (
+SELECT STE_MARK_AFTER POSTA1, STE_STAFF_ID SID4, STE_TRAINING_REFID STR4
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'c i.'
+AND STE_TITLE = 'C'
+) ON (SID4 = STH_STAFF_ID AND STR4 = $P{REFID})
+--A2
+LEFT JOIN (
+SELECT STE_MARK_AFTER POSTA2, STE_STAFF_ID SID5, STE_TRAINING_REFID STR5
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'c ii.'
+AND STE_TITLE = 'C'
+) ON (SID5 = STH_STAFF_ID AND STR5 = $P{REFID})
+--A3
+LEFT JOIN (
+SELECT STE_MARK_AFTER POSTA3, STE_STAFF_ID SID6, STE_TRAINING_REFID STR6
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'c iii.'
+AND STE_TITLE = 'C'
+) ON (SID6 = STH_STAFF_ID AND STR6 = $P{REFID})
+--P1
+LEFT JOIN (
+SELECT STE_MARK_AFTER POSTP1, STE_STAFF_ID SID7, STE_TRAINING_REFID STR7
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'a i.'
+AND STE_TITLE = 'A'
+) ON (SID7 = STH_STAFF_ID AND STR7 = $P{REFID})
+--P2
+LEFT JOIN (
+SELECT STE_MARK_AFTER POSTP2, STE_STAFF_ID SID8, STE_TRAINING_REFID STR8
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'a ii.'
+AND STE_TITLE = 'A'
+) ON (SID8 = STH_STAFF_ID AND STR8 = $P{REFID})
+--P3
+LEFT JOIN (
+SELECT STE_MARK_AFTER POSTP3, STE_STAFF_ID SID9, STE_TRAINING_REFID STR9
+FROM STAFF_TRAINING_EFFECTIVENESS
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'a iii.'
+AND STE_TITLE = 'A'
+) ON (SID9 = STH_STAFF_ID AND STR9 = $P{REFID})]]>
+		</queryString>
+		<field name="TH_REF_ID" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_REF_ID"/>
+		</field>
+		<field name="TH_TRAINING_TITLE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_TRAINING_TITLE"/>
+		</field>
+		<field name="TH_DATE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_DATE"/>
+		</field>
+		<field name="TH_TRAINING_VENUE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TH_TRAINING_VENUE"/>
+		</field>
+		<field name="SM_STAFF_NAME" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="SM_STAFF_NAME"/>
+		</field>
+		<field name="STH_STAFF_ID" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="STH_STAFF_ID"/>
+		</field>
+		<field name="SS_SERVICE_DESC" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="SS_SERVICE_DESC"/>
+		</field>
+		<field name="SM_DEPT_CODE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="SM_DEPT_CODE"/>
+		</field>
+		<field name="POSTK1" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTK1"/>
+		</field>
+		<field name="POSTK2" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTK2"/>
+		</field>
+		<field name="POSTK3" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTK3"/>
+		</field>
+		<field name="POSTA1" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTA1"/>
+		</field>
+		<field name="POSTA2" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTA2"/>
+		</field>
+		<field name="POSTA3" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTA3"/>
+		</field>
+		<field name="POSTP1" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTP1"/>
+		</field>
+		<field name="POSTP2" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTP2"/>
+		</field>
+		<field name="POSTP3" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTP3"/>
+		</field>
+		<variable name="TITLE" class="java.lang.String">
+			<variableExpression><![CDATA[$F{TH_TRAINING_TITLE}]]></variableExpression>
+		</variable>
+		<variable name="DATE" class="java.lang.String">
+			<variableExpression><![CDATA[$F{TH_DATE}]]></variableExpression>
+		</variable>
+		<variable name="VENUE" class="java.lang.String">
+			<variableExpression><![CDATA[$F{TH_TRAINING_VENUE}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="REFID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM DUAL]]>
+	</queryString>
+	<field name="DUMMY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DUMMY"/>
+	</field>
+	<variable name="TITLE" class="java.lang.String"/>
+	<variable name="DATE" class="java.lang.String"/>
+	<variable name="VENUE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="802" height="60" uuid="a5703031-00d2-4aa6-b197-fe2abd2d8b42">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="LIST" uuid="e60869d6-c9b1-4266-8c82-38931dd02ba6">
+						<datasetParameter name="REFID">
+							<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="45" uuid="a9f95aeb-7380-4159-af42-151eda0686d8">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="43f7ed3a-c939-4f65-be56-3b2fbbb2e4da"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["TH_TRAINING_TITLE"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="8c2eb763-4a40-4c19-92d3-af4a8da85ab1"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{TH_TRAINING_TITLE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="eaf2aada-277c-4cfc-9a44-a251d78a72e7">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="7f24a296-0b2e-4469-96a4-13226b7f7168"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["TH_DATE"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="7adf3b48-abe3-40b4-8ed9-03736754382f"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{TH_DATE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="44" uuid="0b71b9cc-8e52-4150-9316-3d447c610e63">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="1723f28d-9d46-4d26-8254-8c9cee6abf00"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["TH_TRAINING_VENUE"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="dbaac1f8-3cf8-4e12-8b4e-87966253c422"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{TH_TRAINING_VENUE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="311e391c-44a7-4404-a788-7b0d41ba7c2a">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="b4b55d34-0317-48f4-9505-c5609b81d676"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["SM_STAFF_NAME"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="ad047196-026a-416f-8c32-0c9e5d8f001b"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{SM_STAFF_NAME}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="ee09d28f-a450-40fe-b3da-b8d0a2d3dec3">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="3b8711dd-f85e-477f-b1a4-b498824b6d92"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["SS_SERVICE_DESC"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="52385096-8bbc-4a03-9770-08f758647677"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{SS_SERVICE_DESC}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="44" uuid="60088779-5341-40db-a7be-8be52fd030ac">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="0ce698f2-a3f3-4599-ab1f-95a71251b862"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["SM_DEPT_CODE"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="40be3248-85b5-46e7-954c-4b651d64c7ee"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{SM_DEPT_CODE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="9af06ad0-51ec-4c35-b2fd-e8a1a1d02cad">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="e72411ed-9735-4cad-ab22-d10fa80176df"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["TH_REF_ID"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="78f16f2c-7154-4ea0-812b-2993a7edd3f8"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{TH_REF_ID}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="44" uuid="609833ab-d7fb-492d-af2f-13304e669b35">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="ed589ef0-621b-47ff-ad3e-46e54707f9b0"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["STH_STAFF_ID"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="bbb70a84-a4ce-4a53-821a-3205f7eefdf5"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{STH_STAFF_ID}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="ff8f1c84-17f9-4012-be9c-d949e41b730b">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="ee0c453d-a7e0-431c-bcbf-58f6c27df7a0"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["BIL"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="8ee6e35c-8fd4-4673-9ee1-421c954373fb"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="44" uuid="83649948-cded-4b4d-8a84-a04739d58816">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="80e8d5c4-c885-43c3-b1c8-c1499724157b"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["POSTP1"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="eeb74c6b-310a-4743-86fd-8d24b3c2cf44"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{POSTP1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="58e4673a-f400-4265-9a71-c6924b240a3d">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="fa82588f-33c8-4fe0-94ba-dc12985c0656"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["POSTP2"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="f6895164-6573-46b8-9fd0-c8e801a5f35e"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{POSTP2}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="44" uuid="e4159a4d-3dbc-48bf-9097-d9cd4eded8c8">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column12"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="2273c613-4df7-456f-ac89-4162e99532a4"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["POSTP3"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="abf837fd-191b-452a-86b2-cc7a2b52e6e6"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{POSTP3}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="44" uuid="b357c191-ae42-4ded-9064-d6876d6671d4">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column13"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="a572a3a9-29dc-4dcc-a2c5-1387739db940"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["POSTK1"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="9c0228dc-8a7e-4b29-ae1c-43e884d590fc"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{POSTK1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="df8a9b5b-a13f-47f3-aace-84bb3d0991f2">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column14"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="6678975c-c2c5-4224-a136-10a7651faeff"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["POSTK2"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="371d75b7-a519-4e98-b283-b61172243ad5"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{POSTK2}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="44" uuid="e2895fa7-3bd5-4167-8bfd-b1937270e839">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column15"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="73723702-6e7f-4479-92bc-c3620b8de0cb"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["POSTK3"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="60eee2c8-b999-4de0-9261-01c959a5ef3d"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{POSTK3}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="530b5659-804b-4696-932a-232a4bd0efe4">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column16"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="bc76a747-ab01-4d21-98b0-10f02a6cec0a"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["POSTA1"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="8b1d9c4c-a1d7-43c6-861e-80fa0afa3304"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{POSTA1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="1de5de89-f97c-4cfe-b730-bd75505fa32f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column17"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="bc9be9eb-c970-48f0-993c-df4eb7e72eb9"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["POSTA2"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="30" uuid="8546af12-4f9b-4b14-a6cb-d80ab532cc19"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{POSTA2}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="44" uuid="b0a4eea7-b4d9-4b53-a448-83081888e4d2">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column18"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="6aa72314-e007-44ce-b34c-5d4e1d815f54"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA["POSTA3"]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="44" height="30" uuid="bfc2a9ec-bb56-4456-925c-385ae355d000"/>
+								<textElement textAlignment="Right">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{POSTA3}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

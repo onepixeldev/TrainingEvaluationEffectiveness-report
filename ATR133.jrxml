@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR133" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c5e4d3ae-4298-4ee9-a28a-6ac8159c8ae5">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+	<property name="ireport.jasperserver.url" value="http://10.99.4.7:8080/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="syazwan|upsidev"/>
+	<property name="ireport.jasperserver.report.resource" value="/Reports/MyHRIS/HRA_AT/ATR133_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Reports/MyHRIS/HRA_AT/ATR133"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -477,7 +481,7 @@ PENGHANTARAN
 						<jr:detailCell style="Table_TD" height="50">
 							<componentElement>
 								<reportElement x="0" y="0" width="94" height="50" uuid="391ede78-5c30-458b-8b0d-0d03a7a1fd52"/>
-								<jr:list>
+								<jr:list printOrder="Vertical">
 									<datasetRun subDataset="SEQ" uuid="193cd179-d78c-4989-9326-0b6cc611497d">
 										<datasetParameter name="REFID">
 											<datasetParameterExpression><![CDATA[$P{REFID}]]></datasetParameterExpression>

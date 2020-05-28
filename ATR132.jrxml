@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR132" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f72d0246-f0e3-4ad5-9775-5097e3a664fc">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
+	<property name="ireport.jasperserver.url" value="http://10.99.4.7:8080/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="syazwan|upsidev"/>
+	<property name="ireport.jasperserver.report.resource" value="/Reports/MyHRIS/HRA_AT/ATR132_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Reports/MyHRIS/HRA_AT/ATR132"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#CCCCCC">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -743,7 +747,7 @@ $P{MONTH2}.equals( "12" )?"DISEMBER":""
 							<jr:detailCell style="Table_TD" height="35">
 								<property name="com.jaspersoft.studio.unit.width" value="px"/>
 								<property name="com.jaspersoft.studio.unit.height" value="px"/>
-								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="20" height="35" uuid="016ed019-cecd-4586-a255-81e0e9084ba8"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial"/>
@@ -768,7 +772,7 @@ $P{MONTH2}.equals( "12" )?"DISEMBER":""
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="35">
 								<property name="com.jaspersoft.studio.unit.width" value="px"/>
-								<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="164" height="35" uuid="ce4e9f30-a8c3-4bbd-8b81-1e6cc0952cbe">
 										<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 										<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
@@ -799,7 +803,7 @@ $P{MONTH2}.equals( "12" )?"DISEMBER":""
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="35">
 								<property name="com.jaspersoft.studio.unit.width" value="px"/>
-								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="127" height="35" uuid="2d882656-219d-452f-8b65-0e4499e84c97"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial"/>
@@ -832,7 +836,7 @@ $P{MONTH2}.equals( "12" )?"DISEMBER":""
 									<jr:column width="81" uuid="195dd678-6026-4443-af46-7b1ba7283cff">
 										<jr:detailCell style="Table 4_TD" height="30">
 											<property name="com.jaspersoft.studio.unit.width" value="px"/>
-											<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+											<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 												<reportElement x="0" y="0" width="81" height="30" uuid="b9879211-2b8f-481b-ae14-6228933666dc"/>
 												<textElement textAlignment="Center" verticalAlignment="Middle">
 													<font fontName="Arial"/>
@@ -860,7 +864,7 @@ $P{MONTH2}.equals( "12" )?"DISEMBER":""
 														<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 													</datasetRun>
 													<jr:listContents height="30" width="41">
-														<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+														<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 															<reportElement x="0" y="0" width="41" height="30" uuid="94450099-9f94-4340-9b50-52f901b21ce8"/>
 															<textElement textAlignment="Center" verticalAlignment="Middle">
 																<font fontName="Arial"/>
@@ -943,7 +947,7 @@ LAPORAN]]></text>
 										<jr:detailCell style="Table 2_TD" height="35">
 											<property name="com.jaspersoft.studio.unit.width" value="px"/>
 											<property name="com.jaspersoft.studio.unit.height" value="px"/>
-											<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+											<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 												<reportElement x="0" y="0" width="81" height="35" uuid="853772e2-2826-40c7-9d93-fedf9a4421d7"/>
 												<textElement textAlignment="Center" verticalAlignment="Middle">
 													<font fontName="Arial"/>
@@ -975,7 +979,7 @@ LAPORAN]]></text>
 														<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 													</datasetRun>
 													<jr:listContents height="35" width="41">
-														<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+														<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 															<reportElement x="0" y="0" width="41" height="35" uuid="4e9fee4e-1972-4c81-b74b-6108f1672ea2"/>
 															<textElement textAlignment="Center" verticalAlignment="Middle">
 																<font fontName="Arial"/>
@@ -1014,7 +1018,7 @@ LAPORAN]]></text>
 									<jr:column width="81" uuid="b0f2d60e-2693-4b21-850e-329a5e6b5d74">
 										<jr:detailCell style="Table 4_TD" height="30">
 											<property name="com.jaspersoft.studio.unit.width" value="px"/>
-											<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+											<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 												<reportElement x="0" y="0" width="81" height="30" uuid="ab7a9a13-4886-4849-b762-f8b294b14b9c"/>
 												<textElement textAlignment="Center" verticalAlignment="Middle">
 													<font fontName="Arial"/>
@@ -1042,7 +1046,7 @@ LAPORAN]]></text>
 														<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 													</datasetRun>
 													<jr:listContents height="30" width="41">
-														<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+														<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 															<reportElement x="0" y="0" width="41" height="30" uuid="91eebc5c-48fe-4014-8033-88e0bd52d9df"/>
 															<textElement textAlignment="Center" verticalAlignment="Middle">
 																<font fontName="Arial"/>
@@ -1121,7 +1125,7 @@ LAPORAN
 									<jr:column width="81" uuid="236980b4-0046-4981-800d-05e9242e5c11">
 										<jr:detailCell style="Table 3_TD" height="35">
 											<property name="com.jaspersoft.studio.unit.width" value="px"/>
-											<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+											<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 												<reportElement x="0" y="0" width="81" height="35" uuid="81d6c67c-b782-415d-966f-90c1ec962b5e"/>
 												<textElement textAlignment="Center" verticalAlignment="Middle">
 													<font fontName="Arial"/>
@@ -1153,7 +1157,7 @@ LAPORAN
 														<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 													</datasetRun>
 													<jr:listContents height="35" width="41">
-														<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+														<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 															<reportElement x="0" y="0" width="41" height="35" uuid="10996c0d-6d66-4c00-9fa2-ebcc40058c96"/>
 															<textElement textAlignment="Center" verticalAlignment="Middle">
 																<font fontName="Arial"/>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR277" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71c1063e-3c3c-4752-89bc-690cabddfee2">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR185" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71c1063e-3c3c-4752-89bc-690cabddfee2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
 	<property name="ireport.jasperserver.url" value="http://10.99.4.7:8080/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="syazwan|upsidev"/>
-	<property name="ireport.jasperserver.report.resource" value="/Reports/MyHRIS/HRA_AT/ATR277_files/main_jrxml"/>
-	<property name="ireport.jasperserver.reportUnit" value="/Reports/MyHRIS/HRA_AT/ATR277"/>
+	<property name="ireport.jasperserver.report.resource" value="/Reports/MyHRIS/HRA_AT/ATR185_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Reports/MyHRIS/HRA_AT/ATR185"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -41,11 +41,10 @@
 		<queryString language="SQL">
 			<![CDATA[SELECT TH_TRAINING_TITLE, TH_DATE, TH_TRAINING_VENUE,
 SM_STAFF_NAME, STH_STAFF_ID, SS_SERVICE_DESC, SM_DEPT_CODE,
-POSTA1, POSTA2, POSTA3, POSTB1, POSTB2, POSTB3, POSTC1, POSTC2, POSTC3,
-PREA1, PREA2, PREA3, PREB1, PREB2, PREB3, PREC1, PREC2, PREC3
+POSTK1, POSTK2, POSTK3, POSTA1, POSTA2, POSTA3, POSTP1,POSTP2, POSTP3
  FROM
 (
-SELECT STH_STAFF_ID,SM_STAFF_NAME||' ('||STH_STAFF_ID||')' SM_STAFF_NAME,
+SELECT STH_STAFF_ID,SM_STAFF_NAME,
 SS_SERVICE_DESC,SM_DEPT_CODE,TH_TRAINING_TITLE,
 TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
 STH_TRAINING_REFID,TH_TRAINING_VENUE
@@ -62,7 +61,7 @@ AND TO_CHAR(TH_DATE_FROM,'yyyy') < '2016'
 AND ($P{REFID}  IS NULL OR ($P{REFID} IS NOT NULL AND TH_REF_ID = $P{REFID}))
 AND STH_SUBMIT_DATE IS NOT NULL
 UNION
-SELECT STH_STAFF_ID,SM_STAFF_NAME||' ('||STH_STAFF_ID||')' SM_STAFF_NAME,
+SELECT STH_STAFF_ID,SM_STAFF_NAME,
 SS_SERVICE_DESC,SM_DEPT_CODE,TH_TRAINING_TITLE,
 TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
 STH_TRAINING_REFID,TH_TRAINING_VENUE
@@ -78,7 +77,7 @@ AND TH_INTERNAL_EXTERNAL = 'EXTERNAL_AGENCY'
 AND ($P{REFID} IS NULL OR ($P{REFID} IS NOT NULL AND TH_REF_ID = $P{REFID}))
 AND STH_SUBMIT_DATE IS NOT NULL
 UNION
-SELECT STH_STAFF_ID,SM_STAFF_NAME||' ('||STH_STAFF_ID||')' SM_STAFF_NAME,
+SELECT STH_STAFF_ID,SM_STAFF_NAME,
 SS_SERVICE_DESC,SM_DEPT_CODE,TH_TRAINING_TITLE,
 TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||TO_CHAR(TH_DATE_TO,'dd/mm/yyyy')TH_DATE,
 STH_TRAINING_REFID,TH_TRAINING_VENUE
@@ -99,148 +98,78 @@ AND ($P{REFID} IS NULL OR ($P{REFID} IS NOT NULL AND TH_REF_ID = $P{REFID}))
 AND STH_SUBMIT_DATE IS NOT NULL
 ORDER BY SM_STAFF_NAME
 )
---POSTA1
+--K1
 LEFT JOIN (
-SELECT STE_MARK_AFTER POSTA1, STE_STAFF_ID, STE_TRAINING_REFID
+SELECT STE_MARK_AFTER POSTK1, STE_STAFF_ID SID1, STE_TRAINING_REFID STR1
 FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Ai'
-) ON (STE_STAFF_ID = STH_STAFF_ID AND STE_TRAINING_REFID = $P{REFID})
---POSTA2
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'b i.'
+AND STE_TITLE = 'B'
+) ON (SID1 = STH_STAFF_ID AND STR1 = $P{REFID})
+--K2
 LEFT JOIN (
-SELECT STE_MARK_AFTER POSTA2, STE_STAFF_ID SID2, STE_TRAINING_REFID STR2
+SELECT STE_MARK_AFTER POSTK2, STE_STAFF_ID SID2, STE_TRAINING_REFID STR2
 FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Aii'
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'b ii.'
+AND STE_TITLE = 'B'
 ) ON (SID2 = STH_STAFF_ID AND STR2 = $P{REFID})
---POSTA3
+--K3
 LEFT JOIN (
-SELECT STE_MARK_AFTER POSTA3, STE_STAFF_ID SID3, STE_TRAINING_REFID STR3
+SELECT STE_MARK_AFTER POSTK3, STE_STAFF_ID SID3, STE_TRAINING_REFID STR3
 FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Aiii'
-AND STE_TITLE = 'A)'
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'b iii.'
+AND STE_TITLE = 'B'
 ) ON (SID3 = STH_STAFF_ID AND STR3 = $P{REFID})
---POSTB1
+--A1
 LEFT JOIN (
-SELECT STE_MARK_AFTER POSTB1, STE_STAFF_ID SID4, STE_TRAINING_REFID STR4
+SELECT STE_MARK_AFTER POSTA1, STE_STAFF_ID SID4, STE_TRAINING_REFID STR4
 FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Bi'
-AND STE_TITLE = 'B)'
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'c i.'
+AND STE_TITLE = 'C'
 ) ON (SID4 = STH_STAFF_ID AND STR4 = $P{REFID})
---POSTB2
+--A2
 LEFT JOIN (
-SELECT STE_MARK_AFTER POSTB2, STE_STAFF_ID SID5, STE_TRAINING_REFID STR5
+SELECT STE_MARK_AFTER POSTA2, STE_STAFF_ID SID5, STE_TRAINING_REFID STR5
 FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Bii'
-AND STE_TITLE = 'B)'
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'c ii.'
+AND STE_TITLE = 'C'
 ) ON (SID5 = STH_STAFF_ID AND STR5 = $P{REFID})
---POSTB3
+--A3
 LEFT JOIN (
-SELECT STE_MARK_AFTER POSTB3, STE_STAFF_ID SID6, STE_TRAINING_REFID STR6
+SELECT STE_MARK_AFTER POSTA3, STE_STAFF_ID SID6, STE_TRAINING_REFID STR6
 FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Biii'
-AND STE_TITLE = 'B)'
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'c iii.'
+AND STE_TITLE = 'C'
 ) ON (SID6 = STH_STAFF_ID AND STR6 = $P{REFID})
---POSTC1
+--P1
 LEFT JOIN (
-SELECT STE_MARK_AFTER POSTC1, STE_STAFF_ID SID7, STE_TRAINING_REFID STR7
+SELECT STE_MARK_AFTER POSTP1, STE_STAFF_ID SID7, STE_TRAINING_REFID STR7
 FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Ci'
-AND STE_TITLE = 'C)'
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'a i.'
+AND STE_TITLE = 'A'
 ) ON (SID7 = STH_STAFF_ID AND STR7 = $P{REFID})
---POSTC2
+--P2
 LEFT JOIN (
-SELECT STE_MARK_AFTER POSTC2, STE_STAFF_ID SID8, STE_TRAINING_REFID STR8
+SELECT STE_MARK_AFTER POSTP2, STE_STAFF_ID SID8, STE_TRAINING_REFID STR8
 FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Cii'
-AND STE_TITLE = 'C)'
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'a ii.'
+AND STE_TITLE = 'A'
 ) ON (SID8 = STH_STAFF_ID AND STR8 = $P{REFID})
---POSTC3
+--P3
 LEFT JOIN (
-SELECT STE_MARK_AFTER POSTC3, STE_STAFF_ID SID9, STE_TRAINING_REFID STR9
+SELECT STE_MARK_AFTER POSTP3, STE_STAFF_ID SID9, STE_TRAINING_REFID STR9
 FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Ciii'
-AND STE_TITLE = 'C)'
-) ON (SID9 = STH_STAFF_ID AND STR9 = $P{REFID})
---PREA1
-LEFT JOIN (
-SELECT STE_MARK_BEFORE PREA1, STE_STAFF_ID SID10, STE_TRAINING_REFID STR10
-FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Ai'
-AND STE_TITLE = 'A)'
-) ON (SID10 = STH_STAFF_ID AND STR10 = $P{REFID})
---PREA2
-LEFT JOIN (
-SELECT STE_MARK_BEFORE PREA2, STE_STAFF_ID SID11, STE_TRAINING_REFID STR11
-FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Aii'
-AND STE_TITLE = 'A)'
-) ON (SID11 = STH_STAFF_ID AND STR11 = $P{REFID})
---PREA3
-LEFT JOIN (
-SELECT STE_MARK_BEFORE PREA3, STE_STAFF_ID SID12, STE_TRAINING_REFID STR12
-FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Aiii'
-AND STE_TITLE = 'A)'
-) ON (SID12 = STH_STAFF_ID AND STR12 = $P{REFID})
---PREB1
-LEFT JOIN (
-SELECT STE_MARK_BEFORE PREB1, STE_STAFF_ID SID13, STE_TRAINING_REFID STR13
-FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Bi'
-AND STE_TITLE = 'B)'
-) ON (SID13 = STH_STAFF_ID AND STR13 = $P{REFID})
---PREB2
-LEFT JOIN (
-SELECT STE_MARK_BEFORE PREB2, STE_STAFF_ID SID14, STE_TRAINING_REFID STR14
-FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Bii'
-AND STE_TITLE = 'B)'
-) ON (SID14 = STH_STAFF_ID AND STR14 = $P{REFID})
---PREB3
-LEFT JOIN (
-SELECT STE_MARK_BEFORE PREB3, STE_STAFF_ID SID15, STE_TRAINING_REFID STR15
-FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Biii'
-AND STE_TITLE = 'B)'
-) ON (SID15 = STH_STAFF_ID AND STR15 = $P{REFID})
---PREC1
-LEFT JOIN (
-SELECT STE_MARK_BEFORE PREC1, STE_STAFF_ID SID16, STE_TRAINING_REFID STR16
-FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Ci'
-AND STE_TITLE = 'C)'
-) ON (SID16 = STH_STAFF_ID AND STR16 = $P{REFID})
---PREC2
-LEFT JOIN (
-SELECT STE_MARK_BEFORE PREC2, STE_STAFF_ID SID17, STE_TRAINING_REFID STR17
-FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Cii'
-AND STE_TITLE = 'C)'
-) ON (SID17 = STH_STAFF_ID AND STR17 = $P{REFID})
---PREC3
-LEFT JOIN (
-SELECT STE_MARK_BEFORE PREC3, STE_STAFF_ID SID18, STE_TRAINING_REFID STR18
-FROM STAFF_TRAINING_EFFECTIVENESS
-WHERE STE_TYPE = '9'
-AND STE_CODE = 'Ciii'
-AND STE_TITLE = 'C)'
-) ON (SID18 = STH_STAFF_ID AND STR18 = $P{REFID})]]>
+WHERE STE_TYPE = '7'
+AND STE_CODE = 'a iii.'
+AND STE_TITLE = 'A'
+) ON (SID9 = STH_STAFF_ID AND STR9 = $P{REFID})]]>
 		</queryString>
 		<field name="TH_TRAINING_TITLE" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="TH_TRAINING_TITLE"/>
@@ -263,6 +192,15 @@ AND STE_TITLE = 'C)'
 		<field name="SM_DEPT_CODE" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="SM_DEPT_CODE"/>
 		</field>
+		<field name="POSTK1" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTK1"/>
+		</field>
+		<field name="POSTK2" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTK2"/>
+		</field>
+		<field name="POSTK3" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTK3"/>
+		</field>
 		<field name="POSTA1" class="java.math.BigDecimal">
 			<property name="com.jaspersoft.studio.field.label" value="POSTA1"/>
 		</field>
@@ -272,50 +210,14 @@ AND STE_TITLE = 'C)'
 		<field name="POSTA3" class="java.math.BigDecimal">
 			<property name="com.jaspersoft.studio.field.label" value="POSTA3"/>
 		</field>
-		<field name="POSTB1" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="POSTB1"/>
+		<field name="POSTP1" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTP1"/>
 		</field>
-		<field name="POSTB2" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="POSTB2"/>
+		<field name="POSTP2" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTP2"/>
 		</field>
-		<field name="POSTB3" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="POSTB3"/>
-		</field>
-		<field name="POSTC1" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="POSTC1"/>
-		</field>
-		<field name="POSTC2" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="POSTC2"/>
-		</field>
-		<field name="POSTC3" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="POSTC3"/>
-		</field>
-		<field name="PREA1" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="PREA1"/>
-		</field>
-		<field name="PREA2" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="PREA2"/>
-		</field>
-		<field name="PREA3" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="PREA3"/>
-		</field>
-		<field name="PREB1" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="PREB1"/>
-		</field>
-		<field name="PREB2" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="PREB2"/>
-		</field>
-		<field name="PREB3" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="PREB3"/>
-		</field>
-		<field name="PREC1" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="PREC1"/>
-		</field>
-		<field name="PREC2" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="PREC2"/>
-		</field>
-		<field name="PREC3" class="java.math.BigDecimal">
-			<property name="com.jaspersoft.studio.field.label" value="PREC3"/>
+		<field name="POSTP3" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="POSTP3"/>
 		</field>
 		<variable name="TITLE" class="java.lang.String">
 			<variableExpression><![CDATA[$F{TH_TRAINING_TITLE}]]></variableExpression>
@@ -359,7 +261,7 @@ AND STE_TITLE = 'C)'
 						<font fontName="Arial" size="8" isBold="true"/>
 						<paragraph rightIndent="0"/>
 					</textElement>
-					<text><![CDATA[ Report ID : ATR277 ]]></text>
+					<text><![CDATA[ Report ID : ATR185 ]]></text>
 				</staticText>
 			</frame>
 			<staticText>
@@ -440,7 +342,7 @@ AND STE_TITLE = 'C)'
 	<detail>
 		<band height="110" splitType="Stretch">
 			<componentElement>
-				<reportElement x="0" y="0" width="802" height="110" uuid="b619ce8e-0a0f-4074-ae38-cc23adc73e28">
+				<reportElement x="0" y="0" width="802" height="80" uuid="b619ce8e-0a0f-4074-ae38-cc23adc73e28">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -458,12 +360,12 @@ AND STE_TITLE = 'C)'
 					</datasetRun>
 					<jr:column width="20" uuid="b2d694f3-360b-418b-8d4f-874bbdf3eb22">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-						<jr:columnHeader style="Table_CH" height="90" rowSpan="3">
+						<jr:columnHeader style="Table_CH" height="60" rowSpan="2">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement x="0" y="0" width="20" height="90" uuid="e4877149-c4c3-462c-be31-8e8b8e99ee9a"/>
+								<reportElement x="0" y="0" width="20" height="60" uuid="e4877149-c4c3-462c-be31-8e8b8e99ee9a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<text><![CDATA[BIL]]></text>
 							</staticText>
@@ -482,20 +384,48 @@ AND STE_TITLE = 'C)'
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="82" uuid="7412ded4-4d8e-4005-a520-834cc71aa5b1">
+					<jr:column width="40" uuid="d0285e3d-a268-4243-bf8d-6b9f44020524">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-						<jr:columnHeader style="Table_CH" height="90" rowSpan="3">
+						<jr:columnHeader style="Table_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="0" width="82" height="90" uuid="724795b6-a38d-4eb2-827d-2fa1ec936cae"/>
+								<reportElement x="0" y="0" width="40" height="60" uuid="1402315a-cd6e-4688-afad-4dad0232fe57"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[NO
+STAFF]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="40" height="20" uuid="f67e14fc-fae4-4a05-9dbd-cb3130cd3bc3">
+									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+									<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+								</reportElement>
+								<textElement>
 									<font fontName="Arial" size="8"/>
+									<paragraph firstLineIndent="0" leftIndent="2" rightIndent="2" spacingBefore="4" spacingAfter="0"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{STH_STAFF_ID}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="207" uuid="7412ded4-4d8e-4005-a520-834cc71aa5b1">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="60" rowSpan="2">
+							<staticText>
+								<reportElement x="0" y="0" width="207" height="60" uuid="724795b6-a38d-4eb2-827d-2fa1ec936cae"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<text><![CDATA[NAMA]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="82" height="20" uuid="5a89e7c9-3f76-47ff-ad84-7fed2f53d960">
+								<reportElement x="0" y="0" width="207" height="20" uuid="5a89e7c9-3f76-47ff-ad84-7fed2f53d960">
 									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
@@ -509,20 +439,20 @@ AND STE_TITLE = 'C)'
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="82" uuid="6187a2da-9894-4aec-a6b0-a481fb0eb3af">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:columnHeader style="Table_CH" height="90" rowSpan="3">
+					<jr:column width="197" uuid="6187a2da-9894-4aec-a6b0-a481fb0eb3af">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="0" width="82" height="90" uuid="978bfb08-79b7-4aab-a119-45109feafdcb"/>
+								<reportElement x="0" y="0" width="197" height="60" uuid="978bfb08-79b7-4aab-a119-45109feafdcb"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<text><![CDATA[JAWATAN]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="82" height="20" uuid="af690ab1-cfd7-4a1f-bb17-7e420876d8df">
+								<reportElement x="0" y="0" width="197" height="20" uuid="af690ab1-cfd7-4a1f-bb17-7e420876d8df">
 									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 								</reportElement>
@@ -534,21 +464,21 @@ AND STE_TITLE = 'C)'
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="40" uuid="3889fb15-d232-4155-9856-60275682b52c">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
-						<jr:columnHeader style="Table_CH" height="90" rowSpan="3">
+					<jr:column width="50" uuid="3889fb15-d232-4155-9856-60275682b52c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table_CH" height="60" rowSpan="2">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement x="0" y="0" width="40" height="90" uuid="9b927387-253d-4d1b-bac9-07e7135244ec"/>
+								<reportElement x="0" y="0" width="50" height="60" uuid="9b927387-253d-4d1b-bac9-07e7135244ec"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<text><![CDATA[PTj]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="40" height="20" uuid="8ca3ef1d-5ec4-4c85-85cd-6bbdcadddf1c">
+								<reportElement x="0" y="0" width="50" height="20" uuid="8ca3ef1d-5ec4-4c85-85cd-6bbdcadddf1c">
 									<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
@@ -563,36 +493,28 @@ AND STE_TITLE = 'C)'
 					</jr:column>
 					<jr:columnGroup width="192" uuid="f7508c38-ba5e-42d8-a573-eb325cbc13e6">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [6]"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="192" height="30" uuid="26a0540a-7ebe-4a1b-87bb-2f7673ccd644"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
-								</textElement>
-								<text><![CDATA[ILMU PENGETAHUAN ]]></text>
-							</staticText>
-						</jr:columnHeader>
 						<jr:columnGroup width="96" uuid="9fc9f2fb-9fad-4bcf-85ac-8bfa32c865c0">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [3]"/>
 							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="96" height="30" uuid="53816458-1ccb-4507-b4a8-87b4a3d1c615"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial" size="8"/>
+										<font fontName="Arial" size="8" isBold="true"/>
 									</textElement>
-									<text><![CDATA[SEBELUM]]></text>
+									<text><![CDATA[Perkembangan
+Pengetahuan]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:column width="32" uuid="39ab0fb0-c0a7-406c-a037-102102871218">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
 								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 									<staticText>
 										<reportElement x="0" y="0" width="32" height="30" uuid="1551f278-de1a-40dc-94e8-4cbbf54fa0a2"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
+											<font fontName="Arial" size="8" isBold="true"/>
 										</textElement>
-										<text><![CDATA[Pre
-(i)]]></text>
+										<text><![CDATA[P1_
+post]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell style="Table_TD" height="20">
@@ -604,20 +526,20 @@ AND STE_TITLE = 'C)'
 											<font fontName="Arial" size="8"/>
 											<paragraph spacingBefore="4"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{PREA1}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{POSTP1}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
 							<jr:column width="32" uuid="4570fac5-78ae-4016-9ac9-2aecb5849800">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
 								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 									<staticText>
 										<reportElement x="0" y="0" width="32" height="30" uuid="cfc73500-2ba4-4421-9f45-c09eec5f3afc"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
+											<font fontName="Arial" size="8" isBold="true"/>
 										</textElement>
-										<text><![CDATA[Pre
-(ii)]]></text>
+										<text><![CDATA[P2_
+post]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell style="Table_TD" height="20">
@@ -629,20 +551,20 @@ AND STE_TITLE = 'C)'
 											<font fontName="Arial" size="8"/>
 											<paragraph spacingBefore="4"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{PREA2}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{POSTP2}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
 							<jr:column width="32" uuid="765d6c93-5458-4178-9521-417d475fe8f1">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
 								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 									<staticText>
 										<reportElement x="0" y="0" width="32" height="30" uuid="4e5538c6-9971-498b-99e5-a3f164ba5b65"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
+											<font fontName="Arial" size="8" isBold="true"/>
 										</textElement>
-										<text><![CDATA[Pre
-(iii)]]></text>
+										<text><![CDATA[P3_
+post]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell style="Table_TD" height="20">
@@ -654,7 +576,7 @@ AND STE_TITLE = 'C)'
 											<font fontName="Arial" size="8"/>
 											<paragraph spacingBefore="4"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{PREA3}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{POSTP3}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
@@ -665,21 +587,22 @@ AND STE_TITLE = 'C)'
 								<staticText>
 									<reportElement x="0" y="0" width="96" height="30" uuid="dfe095b2-f8af-47fc-8936-76370c2ac3ed"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial" size="8"/>
+										<font fontName="Arial" size="8" isBold="true"/>
 									</textElement>
-									<text><![CDATA[SELEPAS]]></text>
+									<text><![CDATA[Peningkatan
+Kemahiran]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:column width="32" uuid="41f57254-3759-4399-a7b5-a2983b6dd13b">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
 								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 									<staticText>
 										<reportElement x="0" y="0" width="32" height="30" uuid="c1fc1ff1-03d4-4d20-852a-990a6d5ede3b"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
+											<font fontName="Arial" size="8" isBold="true"/>
 										</textElement>
-										<text><![CDATA[Post
-(i)]]></text>
+										<text><![CDATA[K1_
+post]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell style="Table_TD" height="20">
@@ -691,20 +614,21 @@ AND STE_TITLE = 'C)'
 											<font fontName="Arial" size="8"/>
 											<paragraph spacingBefore="4"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{POSTA1}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{POSTK1}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
 							<jr:column width="32" uuid="5826998b-2c71-4ea1-9d1c-80df55d1bc24">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
 								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 									<staticText>
 										<reportElement x="0" y="0" width="32" height="30" uuid="b03061d8-0a1d-4094-a330-fcd8b0b7bb4f"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
+											<font fontName="Arial" size="8" isBold="true"/>
 										</textElement>
-										<text><![CDATA[Post
-(ii)]]></text>
+										<text><![CDATA[K2_
+post
+]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell style="Table_TD" height="20">
@@ -716,20 +640,20 @@ AND STE_TITLE = 'C)'
 											<font fontName="Arial" size="8"/>
 											<paragraph spacingBefore="4"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{POSTA2}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{POSTK2}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
 							<jr:column width="32" uuid="2fcd22d0-bb75-4cb5-908a-1334fbbe05be">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
 								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 									<staticText>
 										<reportElement x="0" y="0" width="32" height="30" uuid="eb8e0c97-61ec-4044-98e9-f04f09a907ff"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
+											<font fontName="Arial" size="8" isBold="true"/>
 										</textElement>
-										<text><![CDATA[Post
-(iii)]]></text>
+										<text><![CDATA[K3_
+post]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell style="Table_TD" height="20">
@@ -741,44 +665,38 @@ AND STE_TITLE = 'C)'
 											<font fontName="Arial" size="8"/>
 											<paragraph spacingBefore="4"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{POSTA3}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{POSTK3}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
 						</jr:columnGroup>
 					</jr:columnGroup>
-					<jr:columnGroup width="194" uuid="e5f17f9a-dc15-401b-a641-37af990ca94f">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [6]"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="194" height="30" uuid="69c156f5-9a64-4d05-8fde-3a8f7c302973"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
-								</textElement>
-								<text><![CDATA[KEMAHIRAN]]></text>
-							</staticText>
-						</jr:columnHeader>
+					<jr:columnGroup width="96" uuid="e5f17f9a-dc15-401b-a641-37af990ca94f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [3]"/>
 						<jr:columnGroup width="96" uuid="5bf17707-c9a5-467c-8c10-e9d826b69fab">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [3]"/>
 							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
 									<reportElement x="0" y="0" width="96" height="30" uuid="5170397e-ae2f-4cc2-9eaa-ec26ed9dcf57"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial" size="8"/>
+										<font fontName="Arial" size="8" isBold="true"/>
 									</textElement>
-									<text><![CDATA[SEBELUM]]></text>
+									<text><![CDATA[Perubahan Sikap
+& Amalan
+]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:column width="32" uuid="43e769e3-d845-47df-82eb-7735c2c32eed">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column12"/>
 								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 									<staticText>
 										<reportElement x="0" y="0" width="32" height="30" uuid="a30d2498-0493-4f1f-ac82-0e64086c4b6e"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
+											<font fontName="Arial" size="8" isBold="true"/>
 										</textElement>
-										<text><![CDATA[Pre
-(i)]]></text>
+										<text><![CDATA[A1_
+post
+]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell style="Table_TD" height="20">
@@ -790,20 +708,20 @@ AND STE_TITLE = 'C)'
 											<font fontName="Arial" size="8"/>
 											<paragraph spacingBefore="4"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{PREB1}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{POSTA1}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
 							<jr:column width="32" uuid="cc105354-176b-46d5-9c0b-afb6475f0b51">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column12"/>
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column13"/>
 								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 									<staticText>
 										<reportElement x="0" y="0" width="32" height="30" uuid="9cc3305d-138b-48c9-a155-d6de07f0c9f6"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
+											<font fontName="Arial" size="8" isBold="true"/>
 										</textElement>
-										<text><![CDATA[Pre
-(ii)]]></text>
+										<text><![CDATA[A2_
+post]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell style="Table_TD" height="20">
@@ -815,20 +733,20 @@ AND STE_TITLE = 'C)'
 											<font fontName="Arial" size="8"/>
 											<paragraph spacingBefore="4"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{PREB2}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{POSTA2}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
 							<jr:column width="32" uuid="99461342-6460-40d5-9ffa-3166c39fd591">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column13"/>
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column14"/>
 								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 									<staticText>
 										<reportElement x="0" y="0" width="32" height="30" uuid="519583a1-91fb-4658-9ea6-7188146c5bfc"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
+											<font fontName="Arial" size="8" isBold="true"/>
 										</textElement>
-										<text><![CDATA[Pre
-(iii)]]></text>
+										<text><![CDATA[A3_
+post]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell style="Table_TD" height="20">
@@ -840,281 +758,7 @@ AND STE_TITLE = 'C)'
 											<font fontName="Arial" size="8"/>
 											<paragraph spacingBefore="4"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{PREB3}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-						</jr:columnGroup>
-						<jr:columnGroup width="98" uuid="4c6dec41-d4a4-475f-bbac-51735eefecd8">
-							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [3]"/>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="98" height="30" uuid="9ff73606-f6c3-4e37-8a88-1296fcda306a"/>
-									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial" size="8"/>
-									</textElement>
-									<text><![CDATA[SELEPAS]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:column width="32" uuid="13d9dc2a-7bce-4dd2-9943-a95c4d007958">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column14"/>
-								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="32" height="30" uuid="a4d7b1a8-f6f9-4f10-8fd0-52fbcdd9fb90"/>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
-										</textElement>
-										<text><![CDATA[Post
-(i)]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="Table_TD" height="20">
-									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement x="0" y="0" width="32" height="20" uuid="5aa69317-857d-4419-a7d6-5f49ac7daf6c">
-											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-										</reportElement>
-										<textElement textAlignment="Center" markup="none">
-											<font fontName="Arial" size="8"/>
-											<paragraph spacingBefore="4"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{POSTB1}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-							<jr:column width="33" uuid="351ddb2b-f535-4c73-a979-e9f701145e78">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column15"/>
-								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="33" height="30" uuid="96be3449-3570-4300-9c85-f7f281d8ac63"/>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
-										</textElement>
-										<text><![CDATA[Post
-(ii)]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="Table_TD" height="20">
-									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement x="0" y="0" width="33" height="20" uuid="103f298b-c0b0-42c5-86c1-141002fa668c">
-											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-										</reportElement>
-										<textElement textAlignment="Center" markup="none">
-											<font fontName="Arial" size="8"/>
-											<paragraph spacingBefore="4"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{POSTB2}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-							<jr:column width="33" uuid="19fe35d2-c5d2-4ec2-8eff-7c5b23046b21">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column16"/>
-								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="33" height="30" uuid="7103b052-cbb2-4c48-b9de-f882ac13d91b"/>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
-										</textElement>
-										<text><![CDATA[Post
-(iii)]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="Table_TD" height="20">
-									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement x="0" y="0" width="33" height="20" uuid="ad2bb1ac-7539-41fe-9761-9a5e4665b138">
-											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-										</reportElement>
-										<textElement textAlignment="Center" markup="none">
-											<font fontName="Arial" size="8"/>
-											<paragraph spacingBefore="4"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{POSTB3}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-						</jr:columnGroup>
-					</jr:columnGroup>
-					<jr:columnGroup width="192" uuid="15bf69f8-119c-4b53-a462-79168a97a71a">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [6]"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="192" height="30" uuid="69ca90a7-4c1f-4d83-922c-dedb3df5fbe3"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
-								</textElement>
-								<text><![CDATA[SIKAP]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnGroup width="96" uuid="a125a67f-f448-4d07-ba6b-99c69e99d007">
-							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [3]"/>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="96" height="30" uuid="d03099e9-f6d1-4107-8acf-16e9bca44986"/>
-									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial" size="8"/>
-									</textElement>
-									<text><![CDATA[SEBELUM]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:column width="32" uuid="93e21c29-b065-4524-9b8c-bff0056139c6">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column17"/>
-								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="32" height="30" uuid="45dc481d-a6f4-4411-a8d8-fe4e88bf7455"/>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
-										</textElement>
-										<text><![CDATA[Pre
-(i)]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="Table_TD" height="20">
-									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement x="0" y="0" width="32" height="20" uuid="d66d9b47-7f7e-4233-ac2b-2e555839f0aa">
-											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-										</reportElement>
-										<textElement textAlignment="Center" markup="none">
-											<font fontName="Arial" size="8"/>
-											<paragraph spacingBefore="4"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{PREC1}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-							<jr:column width="32" uuid="d424fb68-afb1-4e08-956d-2efb4eb5485f">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column18"/>
-								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="32" height="30" uuid="e274ece9-1753-4b35-ac56-c19ee01a53b0"/>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
-										</textElement>
-										<text><![CDATA[Pre
-(ii)]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="Table_TD" height="20">
-									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement x="0" y="0" width="32" height="20" uuid="da221c5b-dcc1-4a17-ba90-1931bf533c49">
-											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-										</reportElement>
-										<textElement textAlignment="Center" markup="none">
-											<font fontName="Arial" size="8"/>
-											<paragraph spacingBefore="4"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{PREC2}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-							<jr:column width="32" uuid="acd70e45-eebe-4808-ba8c-99fadd811c23">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column19"/>
-								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="32" height="30" uuid="97995222-8092-4d31-a2fb-13334e7d12e2"/>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
-										</textElement>
-										<text><![CDATA[Pre
-(iii)]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="Table_TD" height="20">
-									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement x="0" y="0" width="32" height="20" uuid="532ab577-b93e-4850-bc58-7b3f293e39e8">
-											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-										</reportElement>
-										<textElement textAlignment="Center" markup="none">
-											<font fontName="Arial" size="8"/>
-											<paragraph spacingBefore="4"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{PREC3}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-						</jr:columnGroup>
-						<jr:columnGroup width="96" uuid="f0d78dc6-dc17-41eb-b2c8-cfec24479b2a">
-							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [3]"/>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="96" height="30" uuid="d2677db2-ea2a-4467-86df-be320d3eadcc"/>
-									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial" size="8"/>
-									</textElement>
-									<text><![CDATA[SELEPAS]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:column width="32" uuid="ef12fde4-d4d7-4ae4-8eb1-a12a38e24cce">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column20"/>
-								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="32" height="30" uuid="3fa4fd94-8f1b-47bc-ae9d-efdfd0fc3913"/>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
-										</textElement>
-										<text><![CDATA[Post
-(i)]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="Table_TD" height="20">
-									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement x="0" y="0" width="32" height="20" uuid="f94476d2-29e3-42f3-a831-1407b26e9717">
-											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-										</reportElement>
-										<textElement textAlignment="Center" markup="none">
-											<font fontName="Arial" size="8"/>
-											<paragraph spacingBefore="4"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{POSTC1}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-							<jr:column width="32" uuid="5e2778d3-d671-4069-869e-8f37379a6f1b">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column21"/>
-								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="32" height="30" uuid="308c53c1-a43a-45eb-b016-f5b5f7564b0c"/>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
-										</textElement>
-										<text><![CDATA[Post
-(ii)]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="Table_TD" height="20">
-									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement x="0" y="0" width="32" height="20" uuid="152cd3d7-49d8-4318-93be-8a5576bdb99e">
-											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-										</reportElement>
-										<textElement textAlignment="Center" markup="none">
-											<font fontName="Arial" size="8"/>
-											<paragraph spacingBefore="4"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{POSTC2}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-							<jr:column width="32" uuid="48dc8586-a9d8-491a-925d-ff7ab230719d">
-								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column22"/>
-								<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="32" height="30" uuid="c85c1e63-3fa7-43b2-b620-81d0d0dc6999"/>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8"/>
-										</textElement>
-										<text><![CDATA[Post
-(iii)]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="Table_TD" height="20">
-									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement x="0" y="0" width="32" height="20" uuid="ff31c4ea-94df-4de5-bc44-2531222b1f8b">
-											<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-										</reportElement>
-										<textElement textAlignment="Center" markup="none">
-											<font fontName="Arial" size="8"/>
-											<paragraph spacingBefore="4"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{POSTC3}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{POSTA3}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
