@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR079" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="762" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="20" uuid="2a40318e-04ab-4ba3-a623-53213c7eddb7">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ATR084" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="762" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="20" uuid="2a40318e-04ab-4ba3-a623-53213c7eddb7">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyHRIS"/>
 	<property name="ireport.jasperserver.url" value="http://10.99.4.7:8080/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="syazwan|upsidev"/>
-	<property name="ireport.jasperserver.report.resource" value="/Reports/MyHRIS/HRA_AT/ATR079_files/main_jrxml"/>
-	<property name="ireport.jasperserver.reportUnit" value="/Reports/MyHRIS/HRA_AT/ATR079"/>
+	<property name="ireport.jasperserver.report.resource" value="/Reports/MyHRIS/HRA_AT/ATR084_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Reports/MyHRIS/HRA_AT/ATR084"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -110,8 +110,7 @@ AND SM_JOB_CODE = SS_SERVICE_CODE
 AND TH_TRAINING_COUNTRY = CM_COUNTRY_CODE
 AND SM_DEPT_CODE = DM_DEPT_CODE
 AND TH_TRAINING_STATE = SM_STATE_CODE(+)
-AND TMH_MODULE = 'TRAINING_EFFECTIVENESS'
-AND NVL(TMHS_CC_STATUS,'N') = 'Y'
+AND TMH_MODULE = 'ASSIGN_TRAINING'
 AND ($P{P_STAFF_ID} IS NULL OR ($P{P_STAFF_ID} IS NOT NULL AND SM_STAFF_ID = $P{P_STAFF_ID}))
 AND ($P{P_DEPT_CODE} IS NULL OR ($P{P_DEPT_CODE} IS NOT NULL AND SM_DEPT_CODE = $P{P_DEPT_CODE}))
 AND ($P{P_YEAR} IS NULL OR ($P{P_YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{P_YEAR}))
@@ -177,7 +176,7 @@ ORDER BY TH_DATE, SM_DEPT_CODE, SS_RANK_KUMPP, SS_SERVICE_KUMPP, SS_SALARY_GRADE
 	<parameter name="P_YEAR" class="java.lang.String"/>
 	<parameter name="P_TRAINING_DATE" class="java.lang.String"/>
 	<parameter name="P_REF_ID" class="java.lang.String"/>
-	<queryString language="plsql">
+	<queryString>
 		<![CDATA[SELECT TH_REF_ID,
 UPPER(TH_TRAINING_TITLE) TH_TRAINING_TITLE, 
 TO_CHAR(TH_DATE_FROM,'dd/mm/yyyy')||' - '||
@@ -200,8 +199,7 @@ AND SM_JOB_CODE = SS_SERVICE_CODE
 AND TH_TRAINING_COUNTRY = CM_COUNTRY_CODE
 AND SM_DEPT_CODE = DM_DEPT_CODE
 AND TH_TRAINING_STATE = SM_STATE_CODE(+)
-AND TMH_MODULE = 'TRAINING_EFFECTIVENESS'
-AND NVL(TMHS_CC_STATUS,'N') = 'Y'
+AND TMH_MODULE = 'ASSIGN_TRAINING'
 AND ($P{P_STAFF_ID} IS NULL OR ($P{P_STAFF_ID} IS NOT NULL AND SM_STAFF_ID = $P{P_STAFF_ID}))
 AND ($P{P_DEPT_CODE} IS NULL OR ($P{P_DEPT_CODE} IS NOT NULL AND SM_DEPT_CODE = $P{P_DEPT_CODE}))
 AND ($P{P_YEAR} IS NULL OR ($P{P_YEAR} IS NOT NULL AND TO_CHAR(TH_DATE_FROM,'yyyy') = $P{P_YEAR}))
@@ -503,7 +501,7 @@ UNIVERSITI PENDIDIKAN SULTAN IDRIS]]></text>
 					<textElement verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-					<text><![CDATA[LAPORAN PENGHANTARAN MEMO PENILAIAN KEBERKESANAN LATIHAN]]></text>
+					<text><![CDATA[LAPORAN PENGHANTARAN MEMO TAWARAN MENGHADIRI KURSUS / LATIHAN]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -639,7 +637,7 @@ UNIVERSITI PENDIDIKAN SULTAN IDRIS]]></text>
 						<font fontName="Arial" size="9" isBold="true"/>
 						<paragraph lineSpacing="Single" lineSpacingSize="1.0" leftIndent="0" spacingBefore="4" tabStopWidth="40"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{TMH_SEQ}!= null?$F{SENT_DATE}+" (Peringatan "+$F{TMH_SEQ}+")":""]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{TMH_SEQ}!= null?$F{SENT_DATE}+" (Memo "+$F{TMH_SEQ}+")":""]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
