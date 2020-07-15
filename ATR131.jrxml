@@ -395,7 +395,7 @@ AND STH_TRAINING_REFID =  $P{REFID}]]>
 				</staticText>
 				<image>
 					<reportElement x="0" y="0" width="150" height="75" uuid="bcb66490-26d2-4700-b485-1a8fdf005df3"/>
-					<imageExpression><![CDATA["repo:/Reports/Image/logo_upsi.png"]]></imageExpression>
+					<imageExpression><![CDATA["D:\\UPSIDev\\JaspersoftWorkspace_6_10\\MyReports\\MyHRIS@dev-1\\Reports\\Image\\logo_upsi.png"]]></imageExpression>
 				</image>
 			</frame>
 			<frame>
